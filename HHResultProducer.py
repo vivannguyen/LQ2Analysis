@@ -20,9 +20,14 @@ if 'cmsneu' in platform.node():
 else:
 	print 'Not running on cmsneu!'
 	#exit()
+	# 2017 NanoAOD
+	NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/analysisTrees/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_05_01/SummaryFiles'
+	QCDDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/analysisTrees/NTupleAnalyzerHH_nanoAOD_Full2017QCDNonIsoQuickTest_2020_05_01/SummaryFiles'
+	# 2016 custom NanoAOD
+	##NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/analysisTrees/NTupleAnalyzerHH_nanoAOD_Full2016QuickTest_2019_10_09/SummaryFiles'
+	##QCDDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/analysisTrees/NTupleAnalyzerHH_nanoAOD_Full2016QCDNonIsoQuickTest_2019_10_17/SummaryFiles'
+	# MiniAOD
 	##NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/dmorse/hhTrees/NTupleAnalyzerHH_FullSyst_2018_09_20/SummaryFiles'
-	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/public/LQ2Analysis/NTupleAnalyzerHH_nanoAOD_Full2016QuickTest_2019_10_09_12_38_54/SummaryFiles'
-	QCDDirectory = '/afs/cern.ch/work/v/vinguyen/public/LQ2Analysis/NTupleAnalyzerHH_nanoAOD_Full2016QCDNonIsoQuickTest_2019_10_17_00_18_28/SummaryFiles'
 	##NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/dmorse/hhTrees/NTupleAnalyzerHH_FullSyst_2019_03_27/SummaryFiles'
 	##QCDDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/dmorse/hhTrees/NTupleAnalyzerHH_hh_newEleBDTs_QCDNonIsoQuickTest_2018_07_07/SummaryFiles'
 	EMuDirectory = 'emu'
@@ -36,7 +41,10 @@ TreeName = "PhysicalVariables"
 #lumi = 40000.0
 #lumi = 21780.339
 #lumi = 35863.308
-lumi = 35860.066
+# 2016
+#lumi = 35860.066
+# 2017
+lumi = 41530.0
 
 #HLT_Ele17_Ele12...DZ
 ##lumi=20809.806
@@ -149,8 +157,8 @@ eleRECOScale += '*(1.3176*(Eta_ele2>-2.5)*(Eta_ele2<-2.45)+1.11378*(Eta_ele2>-2.
 #doubleEleMedIdScale += '*((Eta_ele2>-2.5)*(Eta_ele2<-2.0)*(0.7290*(Pt_ele2>10)*(Pt_ele2<20)+0.8077*(Pt_ele2>20)*(Pt_ele2<35)+0.8479*(Pt_ele2>35)*(Pt_ele2<50)+0.8685*(Pt_ele2>50)*(Pt_ele2<90)+0.9598*(Pt_ele2>90)*(Pt_ele2<150)+ 0.9463*(Pt_ele2>150))+(Eta_ele2>-2.0)*(Eta_ele2<-1.566)*(0.7845*(Pt_ele2>10)*(Pt_ele2<20)+0.8764*(Pt_ele2>20)*(Pt_ele2<35)+0.9074*(Pt_ele2>35)*(Pt_ele2<50)+0.9149*(Pt_ele2>50)*(Pt_ele2<90)+0.8977*(Pt_ele2>90)*(Pt_ele2<150)+0.8722*(Pt_ele2>150))+(Eta_ele2>-1.556)*(Eta_ele2<-1.444)*(0.7433*(Pt_ele2>10)*(Pt_ele2<20)+0.9792*(Pt_ele2>20)*(Pt_ele2<35)+0.9677*(Pt_ele2>35)*(Pt_ele2<50)+0.9706*(Pt_ele2>50)*(Pt_ele2<90)+1.0613*(Pt_ele2>90)*(Pt_ele2<150)+1.0465*(Pt_ele2>150))+(Eta_ele2>-1.444)*(Eta_ele2<-0.8)*(0.9809*(Pt_ele2>10)*(Pt_ele2<20)+0.9635*(Pt_ele2>20)*(Pt_ele2<35)+0.9705*(Pt_ele2>35)*(Pt_ele2<50)+0.9601*(Pt_ele2>50)*(Pt_ele2<90)+0.9329*(Pt_ele2>90)*(Pt_ele2<150)+0.9470*(Pt_ele2>150))+(Eta_ele2>-0.8)*(Eta_ele2<0.0)*(0.9356*(Pt_ele2>10)*(Pt_ele2<20)+0.9446*(Pt_ele2>20)*(Pt_ele2<35)+0.9490*(Pt_ele2>35)*(Pt_ele2<50)+0.9525*(Pt_ele2>50)*(Pt_ele2<90)+0.9506*(Pt_ele2>90)*(Pt_ele2<150)+0.9691*(Pt_ele2>150))+(Eta_ele2>0.0)*(Eta_ele2<0.8)*(0.9620*(Pt_ele2>10)*(Pt_ele2<20)+ 0.9706*(Pt_ele2>20)*(Pt_ele2<35)+ 0.9757*(Pt_ele2>35)*(Pt_ele2<50)+0.9764*(Pt_ele2>50)*(Pt_ele2<90)+0.9876*(Pt_ele2>90)*(Pt_ele2<150)+1.0066*(Pt_ele2>150))+(Eta_ele2>0.8)*(Eta_ele2<1.4444)*(0.9632*(Pt_ele2>10)*(Pt_ele2<20)+0.9532*(Pt_ele2>20)*(Pt_ele2<35)+0.9687*(Pt_ele2>35)*(Pt_ele2<50)+0.9759*(Pt_ele2>50)*(Pt_ele2<90)+0.9718*(Pt_ele2>90)*(Pt_ele2<150)+0.9574*(Pt_ele2>150))+(Eta_ele2>1.444)*(Eta_ele2<1.566)*(0.6824*(Pt_ele2>10)*(Pt_ele2<20)+0.9296*(Pt_ele2>20)*(Pt_ele2<35)+0.9477*(Pt_ele2>35)*(Pt_ele2<50)+0.9597*(Pt_ele2>50)*(Pt_ele2<90)+0.9450*(Pt_ele2>90)*(Pt_ele2<150)+0.8444*(Pt_ele2>150))+(Eta_ele2>1.566)*(Eta_ele2<2.0)*(0.8103*(Pt_ele2>10)*(Pt_ele2<20)+0.8592*(Pt_ele2>20)*(Pt_ele2<35)+0.9004*(Pt_ele2>35)*(Pt_ele2<50)+0.9140*(Pt_ele2>50)*(Pt_ele2<90)+0.9271*(Pt_ele2>90)*(Pt_ele2<150)+0.9074*(Pt_ele2>150))+(Eta_ele2>2.0)*(Eta_ele2<2.5)*(0.7256*(Pt_ele2>10)*(Pt_ele2<20)+0.7962*(Pt_ele2>20)*(Pt_ele2<35)+0.8453*(Pt_ele2>35)*(Pt_ele2<50)+0.8687*(Pt_ele2>50)*(Pt_ele2<90)+0.9123*(Pt_ele2>90)*(Pt_ele2<150)+0.9505*(Pt_ele2>150))))'
 
 # This is the real data trigger condition
-dataHLTMuon = '*(pass_HLT_Mu17_Mu8)'
-dataHLTElectron = '*(Flag_HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ)'
+dataHLTMuon = '*(Flag_HLT_Mu17_Mu8)'
+dataHLTElectron = '*(Flag_HLT_Ele23_Ele12)'
 
 # This is the set of event filters used
 passfilter =  '*(passDataCert*Flag_goodVertices*(GoodVertexCount>=1))'
@@ -161,10 +169,13 @@ passfilter += '*(Flag_BadPFMuonFilter*Flag_BadChargedCandidateFilter)'
 #passfilter += '*(noBadMuonsFlag*(1-duplicateMuonsFlag))'
 
 # This defines the preselections for the mu-mu, mu-nu, and e-mu samples
-preselection_Muon_nos = '((pass_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent))'
+# 2017
+preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent)*(AK8_Pt_Hjet>350)*(AK8_Pt_Zjet>350))'
+# 2016
+#preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent))'
 ## *(1-(run_number==1)*(lumi_number==1764)*(event_number==293919))*(1-(run_number==1)*(lumi_number==109126)*(event_number==125821776))*(1-(run_number==1)*(lumi_number==8709)*(event_number==10040671))*(1-(run_number==1)*(lumi_number==100356)*(event_number==94956608))*(1-(run_number==1)*(lumi_number==418554)*(event_number==67052368))*(1-(run_number==1)*(lumi_number==304909)*(event_number==48846528))*(1-(run_number==1)*(lumi_number==485391)*(event_number==77759520))*(1-(run_number==1)*(lumi_number==444879)*(event_number==71269656))*(1-(run_number==1)*(lumi_number==96384)*(event_number==111130112))*(1-(run_number==276775)*(lumi_number==271)*(event_number==363882336))*(1-(run_number==282800)*(lumi_number==375)*(event_number==714565824))*(1-(run_number==278406)*(lumi_number==1240)*(event_number==-2110167296))*(1-(run_number==275310)*(lumi_number==530)*(event_number==944183168))
 
-preselection_Electron_nos = '((Flag_HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ)*(Pt_ele1>25)*(Pt_ele2>15)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_ee>15)*(isElectronEvent)*(1-isMuonEvent))'
+preselection_Electron_nos = '((Flag_HLT_Ele23_Ele12)*(Pt_ele1>25)*(Pt_ele2>15)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_ee>15)*(isElectronEvent)*(1-isMuonEvent)*(AK8_Pt_Hjet>0)*(AK8_Pt_Zjet>0))'
 #*(1-(run_number==1)*(lumi_number==1764)*(event_number==293919))*(1-(run_number==1)*(lumi_number==109126)*(event_number==125821776))*(1-(run_number==1)*(lumi_number==8709)*(event_number==10040671))*(1-(run_number==1)*(lumi_number==100356)*(event_number==94956608))*(1-(run_number==1)*(lumi_number==418554)*(event_number==67052368))*(1-(run_number==1)*(lumi_number==304909)*(event_number==48846528))*(1-(run_number==1)*(lumi_number==485391)*(event_number==77759520))*(1-(run_number==1)*(lumi_number==444879)*(event_number==71269656))*(1-(run_number==1)*(lumi_number==96384)*(event_number==111130112))*(1-(run_number==276775)*(lumi_number==271)*(event_number==363882336))*(1-(run_number==282800)*(lumi_number==375)*(event_number==714565824))*(1-(run_number==278406)*(lumi_number==1240)*(event_number==-2110167296))*(1-(run_number==275310)*(lumi_number==530)*(event_number==944183168))
 
 
@@ -235,23 +246,29 @@ emu_id_eff_err = 0.0027#v7 JEC
 
 # QCD data-driven scale factor
 useDataDrivenQCD = True
+
+# 2017 nano
+Rz_data_muon  = [1.191, 0.03441]
+Rtt_data_muon = [0.811, 0.013]
+fbd_Muon     = [1.289, 0.01647]
+
 #fbd_Muon     = [1.406, 0.011] # Apr 05, 2019
 fbd_Electron = [1.079, 0.009] # Apr 05, 2019
-fbd_Muon     = [1.678, 0.012] # Nov 20, 2019 - custom Nano 2016
+#fbd_Muon     = [1.678, 0.012] # Nov 20, 2019 - custom Nano 2016
 #fbd_Electron = [1.079, 0.009] # Nov 20, 2019 - custom Nano 2016
 # tt, z SF calculated using Data with NEW method (Apr 05, 2019)
-Rz_data_muon  = [1.139, 0.006]
-Rtt_data_muon = [0.906, 0.013]
+#Rz_data_muon  = [1.139, 0.006]
+#Rtt_data_muon = [0.906, 0.013]
 Rz_data_electron  = [1.241, 0.008]
 Rtt_data_electron = [0.968, 0.018]
 # tt, z SF calculated using Data with NEW method on custom Nano 2016 (Nov 20, 2019)
-Rz_data_muon  = [0.972, 0.021]
-Rtt_data_muon = [0.878, 0.006]
+#Rz_data_muon  = [0.972, 0.021]
+#Rtt_data_muon = [0.878, 0.006]
 #Rz_data_electron  = [1.241, 0.008]
 #Rtt_data_electron = [0.968, 0.018]
 
-#analysisChannel = 'muon'
-analysisChannel = 'electron'
+analysisChannel = 'muon'
+#analysisChannel = 'electron'
 
 analysisSignal = 'HHres' # Spin0 - need to have 'HH' in the name
 #analysisSignal = 'HHBulkGrav' # Spin2 - need to have 'HH' in the name
@@ -530,8 +547,8 @@ def main():
 	# for this, and make use of it. e.g. For systematic variations, we can in batch instead
 	# of running serially, which speeds things up.
 
-
-	version_name = 'Testing_diHiggs_newNtuples_MuCutsMC0p49_'+analysisChannel # scriptflag
+	version_name = 'Testing2017plotsPTcut_'+analysisChannel # scriptflag
+#	version_name = 'Testing_diHiggs_newNtuples_MuCutsMC0p49_'+analysisChannel # scriptflag
 	os.system('mkdir Results_'+version_name)
 
 	MuonOptCutFile = 'Results_'+version_name+'/Opt'+c_OptHH+'Cuts_Smoothed_pol2cutoff.txt' # scriptflag
@@ -668,7 +685,7 @@ def main():
 
 		QCDStudy(qcdselection,qcdselection,MuonOptCutFile,MuNuOptCutFile,NormalWeight,NormalWeightMuNu,version_name)
 
-	if True:
+	if False:
 		[[Rz_uujj,Rz_uujj_err],[Rtt_uujj,Rtt_uujj_err],[Fbd_uujj,Fbd_uujj_err]] = GetNormalizationScaleFactorsAndFbd(NormalWeight+'*'+preselection, NormalDirectory, dyControlRegion, ttControlRegion,0)
 		exit()
 
@@ -783,7 +800,7 @@ def main():
 	# ====================================================================================================================================================== #
 	# This is a basic plotting routine to make Analysis Note style plots with ratio plots. AN Analysis-Note
 	# ====================================================================================================================================================== #
-	if False :
+	if True :
 		# Some modifications to the ST and LQ mass binning
 		bjetbinning = [-1.2,-1.01]
 		for x in range(24):
@@ -901,15 +918,15 @@ def main():
 
 		# UUJJ plots at preselection, Note that putting 'TTBarDataDriven' in the name turns on the use of data-driven ttbar e-mu sample in place of MC
 
-#		# putting 'QCDDataDriven' will also turns on the use of data-driven QCD if not already set at default
+		# putting 'QCDDataDriven' will also turns on the use of data-driven QCD if not already set at default
 #		if "muon" in analysisChannel:
 #			for lqmass in [260,270,300,350,400,450,500,550,600,650,750,800,900,1000]:
 #				MakeBasicPlot("uu_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"muon channel Spin"+x_spin+" BDT output at M"+str(lqmass),bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,lqmass)
 #			MakeBasicPlot("uu_s"+x_spin+"_bdt_discrim_LowM","muon channel Spin"+x_spin+" BDT output combined M260-300",bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,260)
-#		if "ele" in analysisChannel:
-#			for lqmass in [260,270,300,350,400,450,500,550,600,650,750,800,900,1000]:
-#				MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"electron channel Spin"+x_spin+" BDT output at M"+str(lqmass),bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,lqmass)
-#			MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_LowM","electron channel Spin"+x_spin+" BDT output combined M260-300",bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,260)
+		if "ele" in analysisChannel:
+			for lqmass in [260,270,300,350,400,450,500,550,600,650,750,800,900,1000]:
+				MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"electron channel Spin"+x_spin+" BDT output at M"+str(lqmass),bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,lqmass)
+			MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_LowM","electron channel Spin"+x_spin+" BDT output combined M260-300",bdtbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,260)
 
 		MakeBasicPlot("cosTheta_hbb_"+ell+ell,"cos(#Theta) (H->bb) "+latexEll+latexEll,costhetastarbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
 		MakeBasicPlot("cosTheta_z"+ell+ell+"_hzz","cos(#Theta) (Z->"+latexEll+latexEll+", H->ZZ)",costhetastarbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
@@ -983,6 +1000,13 @@ def main():
 		MakeBasicPlot("Zjet2BsfLoose","Zjet2 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
 		MakeBasicPlot("(1-(1-(CMVA_bjet1>-0.5884)*Hjet1BsfLoose)*(1-(CMVA_bjet2>-0.5884)*Hjet2BsfLoose)*(1-(CMVA_Zjet1>-0.5884)*Zjet1BsfLoose)*(1-(CMVA_Zjet2>-0.5884)*Zjet2BsfLoose))","Btag Total SF",[200,0,2],preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
 
+		# AK8 plots
+		MakeBasicPlot("AK8_Pt_Hjet","AK8 p_{T}(bjets) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
+		MakeBasicPlot("AK8_Pt_Zjet","AK8 p_{T}(jets) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
+		MakeBasicPlot("AK8_M_"+ell+ell+"4j","AK8 M_{"+latexEll+latexEll+"4j} [GeV]",lqbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
+		MakeBasicPlot("AK8_mass_Hjet","AK8 M^{bb} from H [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
+		MakeBasicPlot("AK8_mass_Zjet","AK8 M^{jj} from Z [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'standard',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,'',version_name,300)
+
 		#if analysisChannel=='electron' : exit()
 		# fixme turning off final selection
 		# Full Selection Plots
@@ -990,83 +1014,83 @@ def main():
 #			MakeBasicPlot("uu_s"+x_spin+"_bdt_discrim_LowM","muon channel Spin"+x_spin+" BDT output combined M260-300",bdtbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,260)
 #		if 'ele' in analysisChannel :
 #			MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_LowM","electron channel Spin"+x_spin+" BDT output combined M260-300",bdtbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,260)
-		for lqmass in [260,270,300,350,400,450,500,550,600,650,750,800,900,1000]:
-		#for lqmass in [300,900]: # AH
-			if 'muon' in analysisChannel :
-				MakeBasicPlot("uu_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"muon channel Spin"+x_spin+" BDT output at M"+str(lqmass),BinsList_all_dic[str(lqmass)],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			if 'ele' in analysisChannel :
-				MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"electron channel Spin"+x_spin+" BDT output at M"+str(lqmass),BinsList_all_dic[str(lqmass)],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("cosTheta_hbb_"+ell+ell,"cos(#Theta) (H->bb) "+latexEll+latexEll,costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("cosTheta_z"+ell+ell+"_hzz","cos(#Theta) (Z->"+latexEll+latexEll+", H->ZZ)",costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot(cosThetaStar,"cos(#Theta*) ("+latexEll+")",costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("phi0_"+ell+ell,"#phi0_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("phi0_zz_"+ell+ell,"#phi0_zz_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("phi1_"+ell+ell,"#phi1_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("phi1_z"+ell+ell,"#phi1_z"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("phi1_zjj_"+ell+ell,"#phi1_zjj_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("CMVA_bjet1","Jet1(H->bb) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("CMVA_bjet2","Jet2(H->bb) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("CMVA_Zjet1","Jet1(Z->jj) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("CMVA_Zjet2","Jet2(Z->jj) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Hjet1","p_{T}(bjet_{1}) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Hjet2","p_{T}(bjet_{2}) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Zjet1","p_{T}(jet_{1}) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Zjet2","p_{T}(jet_{2}) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Hjets","p_{T}(bb) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_Zjets","p_{T}(jj) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_"+ell+ell,"p_{T}("+latexEll+latexEll+") [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_muon1","p_{T}(#mu_{1}) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_muon2","p_{T}(#mu_{2}) [GeV]",ptbinning2,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_ele1","p_{T}(e_{1}) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_ele2","p_{T}(e_{2}) [GeV]",ptbinning2,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_miss","E_{T}^{miss} [GeV]",[60,0,600],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_Hjet1","#eta(bjet_{1}) (H) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_Hjet2","#eta(bjet_{2}) (Z) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_Zjet1","#eta(jet_{1}) (H) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_Zjet2","#eta(jet_{2}) (Z) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_muon1","#eta(#mu_{1}) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Eta_muon2","#eta(#mu_{2}) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_Hjet1","#phi(bjet_{1}) (H) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_Hjet2","#phi(bjet_{2}) (H) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_Zjet1","#phi(jet_{1}) (Z) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_Zjet2","#phi(jet_{2}) (Z) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_muon1","#phi(#mu_{1}) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Phi_muon2","#phi(#mu_{2}) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("M_"+ell+ell,"M^{"+latexEll+latexEll+"} [GeV]",mllbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Mbb_H","M^{bb} from H [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Mjj_Z","M^{jj} from Z [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("M_"+ell+ell+"jj","M_{"+latexEll+latexEll+"jj} [GeV]",lqbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("M_"+ell+ell+"4j","M_{"+latexEll+latexEll+"4j} [GeV]",lqbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("GoodVertexCount","N_{Vertices}",vbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("JetCount","N_{jet}",njetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("MuonCount","N_{#mu}",nbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("ElectronCount","N_{e}",nbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_muon1muon2","#DeltaR(#mu_{1},#mu_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_ele1ele2","#DeltaR(e_{1},e_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"1Hj1","#DeltaR("+latexEll+"_{1},Hj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"1Hj2","#DeltaR("+latexEll+"_{1},Hj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"2Hj1","#DeltaR("+latexEll+"_{2},Hj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"2Hj2","#DeltaR("+latexEll+"_{2},Hj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"1Zj1","#DeltaR("+latexEll+"_{1},Zj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"1Zj2","#DeltaR("+latexEll+"_{1},Zj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"2Zj1","#DeltaR("+latexEll+"_{2},Zj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+"2Zj2","#DeltaR("+latexEll+"_{2},Zj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_jj_Z","#DeltaR(j_{1},j_{2}) (Z)",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_bb_H","#DeltaR(b_{1},b_{2}) (H)",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+ell+"_bb_H","#DeltaR("+latexEll+latexEll+",bb(H))",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DR_"+ell+ell+"_jj_Z","#DeltaR("+latexEll+latexEll+",jj(Z))",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_muon1met","#Delta #phi (#mu_{1},E_{T}^{miss})",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_ele1met","#Delta #phi (e_{1},E_{T}^{miss})",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_"+ell+ell+"_jj_Z","#Delta#phi("+latexEll+latexEll+",jj(Z))",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_"+ell+ell+"_bb_H","#Delta#phi("+latexEll+latexEll+",bb(H))",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_bb_H","#Delta#phi(bb) (H)",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("DPhi_jj_Z","#Delta#phi(jj) (Z)",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Pt_miss","E_{T}^{miss} [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Hjet1BsfLoose","Hjet1 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Hjet2BsfLoose","Hjet2 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Zjet1BsfLoose","Zjet1 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("Zjet2BsfLoose","Zjet2 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
-			MakeBasicPlot("(1-(1-(CMVA_bjet1>-0.5884)*Hjet1BsfLoose)*(1-(CMVA_bjet2>-0.5884)*Hjet2BsfLoose)*(1-(CMVA_Zjet1>-0.5884)*Zjet1BsfLoose)*(1-(CMVA_Zjet2>-0.5884)*Zjet2BsfLoose))","Btag Total SF",[200,0,2],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#		for lqmass in [260,270,300,350,400,450,500,550,600,650,750,800,900,1000]:
+#		#for lqmass in [300,900]: # AH
+#			if 'muon' in analysisChannel :
+#				MakeBasicPlot("uu_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"muon channel Spin"+x_spin+" BDT output at M"+str(lqmass),BinsList_all_dic[str(lqmass)],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			if 'ele' in analysisChannel :
+#				MakeBasicPlot("ee_s"+x_spin+"_bdt_discrim_M"+str(lqmass),"electron channel Spin"+x_spin+" BDT output at M"+str(lqmass),BinsList_all_dic[str(lqmass)],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("cosTheta_hbb_"+ell+ell,"cos(#Theta) (H->bb) "+latexEll+latexEll,costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("cosTheta_z"+ell+ell+"_hzz","cos(#Theta) (Z->"+latexEll+latexEll+", H->ZZ)",costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot(cosThetaStar,"cos(#Theta*) ("+latexEll+")",costhetastarbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("phi0_"+ell+ell,"#phi0_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("phi0_zz_"+ell+ell,"#phi0_zz_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("phi1_"+ell+ell,"#phi1_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("phi1_z"+ell+ell,"#phi1_z"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("phi1_zjj_"+ell+ell,"#phi1_zjj_"+latexEll+latexEll,phi0binning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("CMVA_bjet1","Jet1(H->bb) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("CMVA_bjet2","Jet2(H->bb) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("CMVA_Zjet1","Jet1(Z->jj) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("CMVA_Zjet2","Jet2(Z->jj) CMVA score",bjetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Hjet1","p_{T}(bjet_{1}) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Hjet2","p_{T}(bjet_{2}) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Zjet1","p_{T}(jet_{1}) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Zjet2","p_{T}(jet_{2}) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Hjets","p_{T}(bb) (H) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_Zjets","p_{T}(jj) (Z) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_"+ell+ell,"p_{T}("+latexEll+latexEll+") [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_muon1","p_{T}(#mu_{1}) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_muon2","p_{T}(#mu_{2}) [GeV]",ptbinning2,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_ele1","p_{T}(e_{1}) [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_ele2","p_{T}(e_{2}) [GeV]",ptbinning2,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_miss","E_{T}^{miss} [GeV]",[60,0,600],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_Hjet1","#eta(bjet_{1}) (H) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_Hjet2","#eta(bjet_{2}) (Z) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_Zjet1","#eta(jet_{1}) (H) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_Zjet2","#eta(jet_{2}) (Z) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_muon1","#eta(#mu_{1}) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Eta_muon2","#eta(#mu_{2}) [GeV]",etabinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_Hjet1","#phi(bjet_{1}) (H) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_Hjet2","#phi(bjet_{2}) (H) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_Zjet1","#phi(jet_{1}) (Z) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_Zjet2","#phi(jet_{2}) (Z) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_muon1","#phi(#mu_{1}) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Phi_muon2","#phi(#mu_{2}) [GeV]",phibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("M_"+ell+ell,"M^{"+latexEll+latexEll+"} [GeV]",mllbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Mbb_H","M^{bb} from H [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Mjj_Z","M^{jj} from Z [GeV]",bosonbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("M_"+ell+ell+"jj","M_{"+latexEll+latexEll+"jj} [GeV]",lqbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("M_"+ell+ell+"4j","M_{"+latexEll+latexEll+"4j} [GeV]",lqbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("GoodVertexCount","N_{Vertices}",vbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("JetCount","N_{jet}",njetbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("MuonCount","N_{#mu}",nbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("ElectronCount","N_{e}",nbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_muon1muon2","#DeltaR(#mu_{1},#mu_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_ele1ele2","#DeltaR(e_{1},e_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"1Hj1","#DeltaR("+latexEll+"_{1},Hj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"1Hj2","#DeltaR("+latexEll+"_{1},Hj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"2Hj1","#DeltaR("+latexEll+"_{2},Hj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"2Hj2","#DeltaR("+latexEll+"_{2},Hj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"1Zj1","#DeltaR("+latexEll+"_{1},Zj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"1Zj2","#DeltaR("+latexEll+"_{1},Zj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"2Zj1","#DeltaR("+latexEll+"_{2},Zj_{1})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+"2Zj2","#DeltaR("+latexEll+"_{2},Zj_{2})",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_jj_Z","#DeltaR(j_{1},j_{2}) (Z)",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_bb_H","#DeltaR(b_{1},b_{2}) (H)",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+ell+"_bb_H","#DeltaR("+latexEll+latexEll+",bb(H))",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DR_"+ell+ell+"_jj_Z","#DeltaR("+latexEll+latexEll+",jj(Z))",drbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_muon1met","#Delta #phi (#mu_{1},E_{T}^{miss})",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_ele1met","#Delta #phi (e_{1},E_{T}^{miss})",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_"+ell+ell+"_jj_Z","#Delta#phi("+latexEll+latexEll+",jj(Z))",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_"+ell+ell+"_bb_H","#Delta#phi("+latexEll+latexEll+",bb(H))",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_bb_H","#Delta#phi(bb) (H)",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("DPhi_jj_Z","#Delta#phi(jj) (Z)",dphibinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Pt_miss","E_{T}^{miss} [GeV]",ptbinning,preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Hjet1BsfLoose","Hjet1 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Hjet2BsfLoose","Hjet2 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Zjet1BsfLoose","Zjet1 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("Zjet2BsfLoose","Zjet2 Btag SF",[120,0,1.5],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
+#			MakeBasicPlot("(1-(1-(CMVA_bjet1>-0.5884)*Hjet1BsfLoose)*(1-(CMVA_bjet2>-0.5884)*Hjet2BsfLoose)*(1-(CMVA_Zjet1>-0.5884)*Zjet1BsfLoose)*(1-(CMVA_Zjet2>-0.5884)*Zjet2BsfLoose))","Btag Total SF",[200,0,2],preselection,NormalWeight,NormalDirectory,'final',ell+ell+'jj',Rz_uujj, Rw_uvjj,Rtt_uujj,MuonOptCutFile,version_name,lqmass)
 		print '------- Done with final selection plots'
 
 		#fixme todo removing this, its not helpful at the moment
@@ -1317,7 +1341,7 @@ def main():
 			#if st>5000:
 			#if t_.St_uvjj>1505 and t_.MT_uv>540 and t_.M_uvjj>660 and t_.Pt_muon1>800:
 			#if t_.Pt_miss>145 and t_.Pt_miss<160 and  t_.Phi_muon2>1.3 and t_.Phi_muon2<1.8 and t_.bdt_discrim_M260>0.05 and t_.bdt_discrim_M260<0.15 and t_.bdt_discrims3_low>0.04 and t_.bdt_discrims3_low<0.1 and t_.cosThetaStarMu>-0.7 and t_.cosThetaStarMu<-0.6:
-			if ((((t_.pass_HLT_Mu17_Mu8)*(t_.Pt_muon1>20)*(t_.Pt_muon2>10)*(t_.Pt_Hjet1>20)*(t_.Pt_Hjet2>20)*(t_.Pt_Zjet1>20)*(t_.Pt_Zjet2>20)*(t_.M_uu>12)*(t_.isMuonEvent)*(1-t_.isElectronEvent))*(((t_.CMVA_bjet1>0.4432)+(t_.CMVA_bjet2>0.4432)+(t_.CMVA_Zjet1>0.4432)+(t_.CMVA_Zjet2>0.4432))>0))>0) and t_.uu_bdt_discrim_M800>0.2 and (t_.weight_central)*(lumi)<-3:
+			if ((((t_.Flag_HLT_Mu17_Mu8)*(t_.Pt_muon1>20)*(t_.Pt_muon2>10)*(t_.Pt_Hjet1>20)*(t_.Pt_Hjet2>20)*(t_.Pt_Zjet1>20)*(t_.Pt_Zjet2>20)*(t_.M_uu>12)*(t_.isMuonEvent)*(1-t_.isElectronEvent))*(((t_.CMVA_bjet1>0.4432)+(t_.CMVA_bjet2>0.4432)+(t_.CMVA_Zjet1>0.4432)+(t_.CMVA_Zjet2>0.4432))>0))>0) and t_.uu_bdt_discrim_M800>0.2 and (t_.weight_central)*(lumi)<-3:
 				print 'run / lumi / event:',int(t_.run_number),'/',int(t_.lumi_number),'/',int(t_.event_number)
 				print 'Pt_muon1     ',t_.Pt_muon1
 				#print 'Pt_muon1_raw ',t_.Pt_muon1_noTuneP
@@ -3546,7 +3570,7 @@ def FullAnalysis(optimlog,PreSelection_uujj,selection_uujj,selection_uvjj,Normal
 
 	## Version to be used + JES old: I will run this
 	_Variations = ['','JESAbsoluteMPFBiasUp','JESAbsoluteMPFBiasDown','JESAbsoluteScaleUp','JESAbsoluteScaleDown','JESAbsoluteStatUp','JESAbsoluteStatDown','JESFlavorQCDUp','JESFlavorQCDDown','JESFragmentationUp','JESFragmentationDown','JESPileUpDataMCUp','JESPileUpDataMCDown','JESPileUpPtBBUp','JESPileUpPtBBDown','JESPileUpPtEC1Up','JESPileUpPtEC1Down','JESPileUpPtEC2Up','JESPileUpPtEC2Down','JESPileUpPtHFUp','JESPileUpPtHFDown','JESPileUpPtRefUp','JESPileUpPtRefDown','JESRelativeBalUp','JESRelativeBalDown','JESRelativeFSRUp','JESRelativeFSRDown','JESRelativeJEREC1Up','JESRelativeJEREC1Down','JESRelativeJEREC2Up','JESRelativeJEREC2Down','JESRelativeJERHFUp','JESRelativeJERHFDown','JESRelativePtBBUp','JESRelativePtBBDown','JESRelativePtEC1Up','JESRelativePtEC1Down','JESRelativePtEC2Up','JESRelativePtEC2Down','JESRelativePtHFUp','JESRelativePtHFDown','JESRelativeStatECUp','JESRelativeStatECDown','JESRelativeStatFSRUp','JESRelativeStatFSRDown','JESRelativeStatHFUp','JESRelativeStatHFDown','JESSinglePionECALUp','JESSinglePionECALDown','JESSinglePionHCALUp','JESSinglePionHCALDown','JESTimePtEtaUp','JESTimePtEtaDown','JERup','JERdown','JESup','JESdown','LUMIup','LUMIdown','PUup','PUdown','ZNORMup','ZNORMdown','TTNORMup','TTNORMdown','MUONIDISOup','MUONIDISOdown','HIPup','HIPdown','MUONHLTup','MUONHLTdown','ELEHLTup','ELEHLTdown','ELEIDISOup','ELEIDISOdown','BTAGup','BTAGdown','QCDscaleR1F2','QCDscaleR2F1','QCDscaleR2F2','QCDscaleR1F0p5','QCDscaleR0p5F1','QCDscaleR0p5F0p5','topPtReweight']
-	
+
 	#_Variations = ['']
 
 	for v in _Variations:
@@ -5195,12 +5219,12 @@ def MakeBasicPlot(recovariable,xlabel,presentationbinning,selection,weight,FileD
 
 	if  'PAS' in tagname and 'tagfree' not in tagname:
 		#l1.DrawLatex(0.18,0.94,"CMS #it{Preliminary}      "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                                35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                                41.5 fb^{-1} (13 TeV)")
 		#l1.DrawLatex(0.64,0.94,"5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 	else:
 		#l1.DrawLatex(0.18,0.94,"                          "+sqrts+", 225.57 pb^{-1}")
-		l1.DrawLatex(0.12,0.94,"#it{Preliminary}                             35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.12,0.94,"#it{Preliminary}                             41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 
 
@@ -5739,12 +5763,12 @@ def MakeBasicPlot2D(recovariableX,recovariableY,xlabel,ylabel,presentationbinnin
 
 	if  'PAS' in tagname and 'tagfree' not in tagname:
 		#l1.DrawLatex(0.18,0.94,"CMS #it{Preliminary}      "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.12,0.93,"#it{Preliminary}                              35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.12,0.93,"#it{Preliminary}                              41.5 fb^{-1} (13 TeV)")
 		#l1.DrawLatex(0.64,0.94,"5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.86,"CMS")
 	else:
 		#l1.DrawLatex(0.18,0.94,"                          "+sqrts+", 225.57 pb^{-1}")
-		l1.DrawLatex(0.1,0.93,"#it{Preliminary}                          35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.1,0.93,"#it{Preliminary}                          41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.16,0.855,"CMS")
 
 	gPad.Update()
@@ -5958,11 +5982,11 @@ def MakeBasicPlotQCD(recovariable,xlabel,presentationbinning,selection,qcdselect
 	# l2.DrawLatex(0.15,0.83,"CMS #it{Preliminary}")
 	if  'PAS' in tagname and 'tagfree' not in tagname:
 		#l2.DrawLatex(0.18,0.94,"CMS #it{Preliminary}      "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 	else:
 		#l2.DrawLatex(0.18,0.94,"                          "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 	gPad.RedrawAxis()
 
@@ -6265,11 +6289,11 @@ def MakeBasicPlotEMu(recovariable,xlabel,presentationbinning,selection,weight,Fi
 	# l2.DrawLatex(0.15,0.83,"CMS #it{Preliminary} ")
 	if  'PAS' in tagname and 'tagfree' not in tagname:
 		#l2.DrawLatex(0.18,0.94,"CMS #it{Preliminary}      "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 	else:
 		#l2.DrawLatex(0.18,0.94,"                          "+sqrts+", 19.7 fb^{-1}")
-		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            35.9 fb^{-1} (13 TeV)")
+		l1.DrawLatex(0.13,0.94,"#it{Preliminary}                            41.5 fb^{-1} (13 TeV)")
 		l2.DrawLatex(0.15,0.84,"CMS")
 
 	gPad.RedrawAxis()
