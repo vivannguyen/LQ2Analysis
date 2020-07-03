@@ -145,6 +145,7 @@ startingweight = _TopPtFactor*float(options.crosssection)*float(options.lumi)/fl
 #No = t.GetEntries()
 t = fin.Get("Events")
 N = t.GetEntries()
+#N = 1000
 
 # Here we are going to pre-skim the file to reduce running time.
 indicator = ((name.split('/'))[-1]).replace('.root','')
@@ -331,10 +332,10 @@ _kinematicvariables_systOnly += ['ee_s2_bdt_discrim_M750','ee_s2_bdt_discrim_M80
 
 #_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5','scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_amcNLO','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt']
 #removing weight_amcNLO (always 0 anyway)
-_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5','scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt']
+_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5','scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt','weight_l1prefiring','weight_l1prefiring_up','weight_l1prefiring_down']
 _flagDoubles = ['run_number','event_number','lumi_number']
 ##_flags = ['Flag_HLT_Ele27_WPTight_Gsf','GoodVertexCount','passTriggerObjectMatching']
-_flags = ['Flag_HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ','Flag_HLT_Ele27_WPTight_Gsf','GoodVertexCount','passTriggerObjectMatching','pass_HLT_Mu17_Mu8']
+_flags = ['Flag_HLT_Ele23_Ele12','Flag_HLT_Ele27_WPTight_Gsf','GoodVertexCount','passTriggerObjectMatching','Flag_HLT_Mu17_Mu8']
 _flags += ['passDataCert']
 ##_flags += ['Flag_PrimaryVertex','passDataCert']
 _flags += ['Flag_BadChargedCandidateFilter','Flag_BadChargedCandidateSummer16Filter','Flag_BadGlobalMuon','Flag_BadPFMuonFilter','Flag_BadPFMuonSummer16Filter','Flag_CSCTightHalo2015Filter','Flag_CSCTightHaloFilter','Flag_CSCTightHaloTrkMuUnvetoFilter','Flag_EcalDeadCellBoundaryEnergyFilter','Flag_EcalDeadCellTriggerPrimitiveFilter','Flag_HBHENoiseFilter','Flag_HBHENoiseIsoFilter','Flag_HcalStripHaloFilter','Flag_METFilters','Flag_chargedHadronTrackResolutionFilter','Flag_ecalBadCalibFilter','Flag_ecalBadCalibFilterV2','Flag_ecalLaserCorrFilter','Flag_eeBadScFilter','Flag_globalSuperTightHalo2016Filter','Flag_globalTightHalo2016Filter','Flag_goodVertices','Flag_hcalLaserEventFilter','Flag_muonBadTrackFilter','Flag_trkPOGFilters','Flag_trkPOG_logErrorTooManyClusters','Flag_trkPOG_manystripclus53X','Flag_trkPOG_toomanystripclus53X']
@@ -1470,10 +1471,12 @@ def LooseIDMuons(T,_met,variation,isdata):
 	# Loop over muons using the pT array from above
 	for n in range(len(_MuonPt)):
 
+		Muon_ptTuneP = T.Muon_tunepRelPt[nequiv[n]]*_MuonPt[n]
+
 		# Some muon alignment studies use the inverse diff of the high pT and Trk pT values
 		deltainvpt = -1.0
-		if ( T.Muon_ptTuneP[nequiv[n]] > 0.0 ) and (_MuonPt[n]>0.0):
-			deltainvpt = ( 1.0/T.Muon_ptTuneP[nequiv[n]] - 1.0/_MuonPt[n])
+		if ( Muon_ptTuneP > 0.0 ) and (_MuonPt[n]>0.0):
+			deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
 
 		# For alignment correction studies in MC, the pT is modified according to
 		# parameterizations of the position
@@ -1485,7 +1488,7 @@ def LooseIDMuons(T,_met,variation,isdata):
 				__Charge_mu = T.Muon_charge[nequiv[n]]
 				if (__Pt_mu >200)*(abs(__Eta_mu) < 0.9)      :
 					_MuonPt[n] =  ( (1.0) / ( -5e-05*__Charge_mu*sin(-1.4514813+__Phi_mu ) + 1.0/__Pt_mu ) )
-				deltainvpt = ( 1.0/T.Muon_ptTuneP[nequiv[n]] - 1.0/_MuonPt[n])
+				deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
 
 
 		# For the ID, begin by assuming it passes. Veto if it fails any condition
@@ -1571,10 +1574,12 @@ def MediumIDMuons(T,_met,variation,isdata):
 	# Loop over muons using the pT array from above
 	for n in range(len(_MuonPt)):
 
+		Muon_ptTuneP = T.Muon_tunepRelPt[nequiv[n]]*_MuonPt[n]
+
 		# Some muon alignment studies use the inverse diff of the high pT and Trk pT values
 		deltainvpt = -1.0
-		if ( T.Muon_ptTuneP[nequiv[n]] > 0.0 ) and (_MuonPt[n]>0.0):
-			deltainvpt = ( 1.0/T.Muon_ptTuneP[nequiv[n]] - 1.0/_MuonPt[n])
+		if ( Muon_ptTuneP > 0.0 ) and (_MuonPt[n]>0.0):
+			deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
 
 		# For alignment correction studies in MC, the pT is modified according to
 		# parameterizations of the position
@@ -1586,7 +1591,7 @@ def MediumIDMuons(T,_met,variation,isdata):
 				__Charge_mu = T.Muon_charge[nequiv[n]]
 				if (__Pt_mu >200)*(abs(__Eta_mu) < 0.9)      :
 					_MuonPt[n] =  ( (1.0) / ( -5e-05*__Charge_mu*sin(-1.4514813+__Phi_mu ) + 1.0/__Pt_mu ) )
-				deltainvpt = ( 1.0/T.Muon_ptTuneP[nequiv[n]] - 1.0/_MuonPt[n])
+				deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
 
 
 		# For the ID, begin by assuming it passes. Veto if it fails any condition
@@ -1685,8 +1690,6 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 			Pass *= abs(T.Electron_dxy[n])< 0.10
 			Pass *= abs(T.Electron_dz[n]) < 0.20
 
-		iso = T.Electron_mvaFall17V1Iso[n]
-
 		"""
 	        ecal_energy_inverse = 1.0/T.ElectronEcalEnergy[n]
 		eSCoverP = T.ElectronESuperClusterOverP[n]
@@ -1720,24 +1723,33 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 
 		"""
 
-		iso=T.Electron_mvaFall17V2Iso[n]/T.Electron_pt[n]
+		iso=T.Electron_pfRelIso03_all[n]
 		# Don't apply isolation for QCD studies
 		if nonisoswitch != True:
 			if (barrel):
-				#Pass *= iso<0.0588#tight
-				Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
+        			if _year=='2016':
+					Pass *= iso<0.15
+					#Pass *= iso<0.0588
+        			else:
+					Pass *= iso<(0.0287+(0.506/_ElectronPt[n]))
+				#Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
 				#Pass *= iso<0.15#ZH(bb)
 		                #fixme removing hlt-safe cuts for now
 		                #Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.165*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.160
 		                #Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.060*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
 		                #Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
 			elif (endcap):
-				#Pass *= iso<0.0571
-				Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
+        			if _year=='2016':
+					Pass *= iso<0.15
+					#Pass *= iso<0.0571
+        			else:
+					Pass *= iso<(0.0445+(0.963/_ElectronPt[n]))
+				#Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
 				#Pass *= iso<0.15#ZH(bb)
                                 #fixme removing hlt-safe cuts for now
 		                #Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.132*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
 		                #Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
+	                	#Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
 
 		[_idIsoSF,_idIsoSFUp,_idIsoSFDown,_hlt1SF,_hlt1SFup,_hlt1SFdown,_hlt2SF,_hlt2SFup,_hlt2SFdown] = getSFelectron(_ElectronPt[n],T.Electron_eta[n])
 #?		[_idIsoSF,_idIsoSFUp,_idIsoSFDown,_hlt1SF,_hlt1SFup,_hlt1SFdown,_hlt2SF,_hlt2SFup,_hlt2SFdown] = getSFelectron(_ElectronPt[n],T.ElectronSCEta[n]) need SCEta above?
@@ -2435,7 +2447,7 @@ def LooseIDJets(T,met,variation,isdata):
 				if isData:
 					bTagSFsMed.append([1.0, 1.0, 1.0])
 				else:
-					bTagSFsMed.append([T.Jet_btagSF[n], T.Jet_btagSF_up[n], T.Jet_btagSF_down[n]])
+					bTagSFsMed.append([T.Jet_btagSF_deepcsv_M[n], T.Jet_btagSF_deepcsv_M_up[n], T.Jet_btagSF_deepcsv_M_down[n]])
                                 #
 
                                 sf_loose_csv, sf_loose_csv_up, sf_loose_csv_down, sf_medium_csv, sf_medium_csv_up, sf_medium_csv_down=1.,1.,1.,1.,1.,1.
@@ -4492,12 +4504,15 @@ for n in range(N):
 	# print '-----'
 	# Assign Weights
 	if 'SingleMuon' in name or 'SingleElectron' in name or 'DoubleMuon' in name or 'DoubleEG' in name:
-		Branches['weight_central'][0] = 1.0#startingweight*t.genWeight*t.puWeight#GetPUWeight(t,'Central','Basic')
+		Branches['weight_central'][0] = 1.0#startingweight*t.genWeight*eight#GetPUWeight(t,'Central','Basic')
 		Branches['weight_pu_down'][0] = 1.0#startingweight*t.genWeight*t.puWeightUp#GetPUWeight(t,'SysDown','Basic')
 		Branches['weight_pu_up'][0] = 1.0#startingweight*t.genWeight*t.puWeightDown#GetPUWeight(t,'SysUp','Basic')
 		#Branches['weight_central_2012D'][0] = startingweight*GetPUWeight(t,'Central','2012D')
 		Branches['weight_nopu'][0] = 1.0#startingweight*t.genWeight
 		Branches['weight_topPt'][0]= 1.0#_TopPtFactor*startingweight*t.genWeight
+		Branches['weight_l1prefiring'][0]= 1.0
+		Branches['weight_l1prefiring_up'][0]= 1.0
+		Branches['weight_l1prefiring_down'][0]= 1.0
 	else:
 		Branches['weight_central'][0] = startingweight*t.genWeight*t.puWeight#GetPUWeight(t,'Central','Basic')
 		Branches['weight_pu_down'][0] = startingweight*t.genWeight*t.puWeightUp#GetPUWeight(t,'SysDown','Basic')
@@ -4505,6 +4520,14 @@ for n in range(N):
 		#Branches['weight_central_2012D'][0] = startingweight*GetPUWeight(t,'Central','2012D')
 		Branches['weight_nopu'][0] = startingweight*t.genWeight
 		Branches['weight_topPt'][0]=_TopPtFactor*startingweight*t.genWeight
+        	if _year=='2018':
+			Branches['weight_l1prefiring'][0]= 1.0
+			Branches['weight_l1prefiring_up'][0]= 1.0
+			Branches['weight_l1prefiring_down'][0]= 1.0
+		else:
+			Branches['weight_l1prefiring'][0]= t.L1PreFiringWeight_Nom
+			Branches['weight_l1prefiring_up'][0]= t.L1PreFiringWeight_Up
+			Branches['weight_l1prefiring_down'][0]= t.L1PreFiringWeight_Dn
 
 	#if 'amcatnlo' in amcNLOname :
 	#	Branches['weight_central'][0]*=t.amcNLOWeight
@@ -4560,8 +4583,29 @@ for n in range(N):
 	Branches['passTriggerObjectMatching'][0] = 0
 
         #Trigger on Data and MC
-	Branches['Flag_HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ'][0] = t.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
-	Branches['pass_HLT_Mu17_Mu8'][0] = 1 if (t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ + t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL)>0 else 0
+        if _year=='2016':
+		Branches['Flag_HLT_Ele23_Ele12'][0] = t.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ
+
+		if hasattr(t,'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ'):
+			Branches['Flag_HLT_Mu17_Mu8'][0] = t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ
+	       	elif hasattr(t,'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL'):
+			Branches['Flag_HLT_Mu17_Mu8'][0] = t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL
+		else:
+			Branches['Flag_HLT_Mu17_Mu8'][0] = 0
+
+        elif _year=='2017':
+		Branches['Flag_HLT_Ele23_Ele12'][0] = t.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL
+
+		if hasattr(t,'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8'):
+			Branches['Flag_HLT_Mu17_Mu8'][0] = t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8
+        	elif hasattr(t,'HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8'):
+			Branches['Flag_HLT_Mu17_Mu8'][0] = t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8
+		else:
+			Branches['Flag_HLT_Mu17_Mu8'][0] = 0
+
+        elif _year=='2018':
+		Branches['Flag_HLT_Ele23_Ele12'][0] = t.HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL
+		Branches['Flag_HLT_Mu17_Mu8'][0] = t.HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8
 
 	if isData:
         	Branches['Flag_BadChargedCandidateFilter'][0]         = t.Flag_BadChargedCandidateFilter
@@ -4569,12 +4613,12 @@ for n in range(N):
 		Branches['Flag_BadPFMuonFilter'][0]	       	      = t.Flag_BadPFMuonFilter
 	else:
                 if _year=='2016':
-                        Branches['Flag_BadChargedCandidateFilter'][0]         = ord(t.Flag_BadChargedCandidateFilter)
-                        Branches['Flag_BadGlobalMuon'][0]	       	      = ord(t.Flag_BadGlobalMuon)	
-                        Branches['Flag_BadPFMuonFilter'][0]	       	      = ord(t.Flag_BadPFMuonFilter)
+                        Branches['Flag_BadChargedCandidateFilter'][0]         = t.Flag_BadChargedCandidateFilter
+                        Branches['Flag_BadGlobalMuon'][0]	       	      = 1#t.Flag_BadGlobalMuon
+                        Branches['Flag_BadPFMuonFilter'][0]	       	      = t.Flag_BadPFMuonFilter
                 elif _year=='2017':
                         Branches['Flag_BadChargedCandidateFilter'][0]         = t.Flag_BadChargedCandidateFilter
-                        Branches['Flag_BadGlobalMuon'][0]	       	      = 1#t.Flag_BadGlobalMuon		
+                        Branches['Flag_BadGlobalMuon'][0]	       	      = 1#t.Flag_BadGlobalMuon
                         Branches['Flag_BadPFMuonFilter'][0]	       	      = t.Flag_BadPFMuonFilter
 	Branches['Flag_BadChargedCandidateSummer16Filter'][0] = 1#t.Flag_BadChargedCandidateSummer16Filter
 	Branches['Flag_BadPFMuonSummer16Filter'][0]    	      = 1#t.Flag_BadPFMuonSummer16Filter
