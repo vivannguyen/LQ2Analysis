@@ -220,6 +220,7 @@ _kinematicvariables += ['AK8_M_uu4j_genMatched']
 _kinematicvariables += ['AK8_M_ee4j_genMatched']
 
 _kinematicvariables += ['X_miss','Y_miss']
+_kinematicvariables += ['Flag_isoEle1','Flag_noIsoEle1','Flag_isoEle2','Flag_noIsoEle2']
 _kinematicvariables += ['TrkIso_muon1','TrkIso_muon2','TrkIso_ele1','TrkIso_ele2']
 _kinematicvariables += ['Charge_muon1','Charge_muon2','Charge_ele1','Charge_ele2']
 _kinematicvariables += ['TrkGlbDpt_muon1','TrkGlbDpt_muon2']
@@ -330,18 +331,26 @@ _kinematicvariables_systOnly += ['ee_s2_bdt_discrim_M260','ee_s2_bdt_discrim_M27
 _kinematicvariables_systOnly += ['ee_s2_bdt_discrim_M450','ee_s2_bdt_discrim_M500','ee_s2_bdt_discrim_M550','ee_s2_bdt_discrim_M600','ee_s2_bdt_discrim_M650']
 _kinematicvariables_systOnly += ['ee_s2_bdt_discrim_M750','ee_s2_bdt_discrim_M800','ee_s2_bdt_discrim_M900','ee_s2_bdt_discrim_M1000']
 
-#_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5','scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_amcNLO','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt']
-#removing weight_amcNLO (always 0 anyway)
-_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5','scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt','weight_l1prefiring','weight_l1prefiring_up','weight_l1prefiring_down']
+_weights = ['scaleWeight_Up','scaleWeight_Down','scaleWeight_R1_F1','scaleWeight_R1_F2','scaleWeight_R1_F0p5','scaleWeight_R2_F1','scaleWeight_R2_F2','scaleWeight_R2_F0p5',
+'scaleWeight_R0p5_F1','scaleWeight_R0p5_F2','scaleWeight_R0p5_F0p5','scaleWeight_R2_F2','weight_nopu','weight_central', 'weight_pu_up', 'weight_pu_down','weight_topPt',
+'weight_l1prefiring','weight_l1prefiring_up','weight_l1prefiring_down']
 _flagDoubles = ['run_number','event_number','lumi_number']
-##_flags = ['Flag_HLT_Ele27_WPTight_Gsf','GoodVertexCount','passTriggerObjectMatching']
-_flags = ['Flag_HLT_Ele23_Ele12','Flag_HLT_Ele27_WPTight_Gsf','GoodVertexCount','passTriggerObjectMatching','Flag_HLT_Mu17_Mu8']
+_flags = ['Flag_HLT_Ele23_Ele12','GoodVertexCount','passTriggerObjectMatching','Flag_HLT_Mu17_Mu8']
 _flags += ['passDataCert']
-##_flags += ['Flag_PrimaryVertex','passDataCert']
-_flags += ['Flag_BadChargedCandidateFilter','Flag_BadChargedCandidateSummer16Filter','Flag_BadGlobalMuon','Flag_BadPFMuonFilter','Flag_BadPFMuonSummer16Filter','Flag_CSCTightHalo2015Filter','Flag_CSCTightHaloFilter','Flag_CSCTightHaloTrkMuUnvetoFilter','Flag_EcalDeadCellBoundaryEnergyFilter','Flag_EcalDeadCellTriggerPrimitiveFilter','Flag_HBHENoiseFilter','Flag_HBHENoiseIsoFilter','Flag_HcalStripHaloFilter','Flag_METFilters','Flag_chargedHadronTrackResolutionFilter','Flag_ecalBadCalibFilter','Flag_ecalBadCalibFilterV2','Flag_ecalLaserCorrFilter','Flag_eeBadScFilter','Flag_globalSuperTightHalo2016Filter','Flag_globalTightHalo2016Filter','Flag_goodVertices','Flag_hcalLaserEventFilter','Flag_muonBadTrackFilter','Flag_trkPOGFilters','Flag_trkPOG_logErrorTooManyClusters','Flag_trkPOG_manystripclus53X','Flag_trkPOG_toomanystripclus53X']
+_flags += ['Flag_BadChargedCandidateFilter','Flag_BadChargedCandidateSummer16Filter','Flag_BadGlobalMuon','Flag_BadPFMuonFilter','Flag_BadPFMuonSummer16Filter',
+'Flag_CSCTightHalo2015Filter','Flag_CSCTightHaloFilter','Flag_CSCTightHaloTrkMuUnvetoFilter','Flag_EcalDeadCellBoundaryEnergyFilter','Flag_EcalDeadCellTriggerPrimitiveFilter',
+'Flag_HBHENoiseFilter','Flag_HBHENoiseIsoFilter','Flag_HcalStripHaloFilter','Flag_METFilters','Flag_chargedHadronTrackResolutionFilter',
+'Flag_ecalBadCalibFilter','Flag_ecalBadCalibFilterV2','Flag_ecalLaserCorrFilter','Flag_eeBadScFilter','Flag_globalSuperTightHalo2016Filter','Flag_globalTightHalo2016Filter',
+'Flag_goodVertices','Flag_hcalLaserEventFilter','Flag_muonBadTrackFilter','Flag_trkPOGFilters','Flag_trkPOG_logErrorTooManyClusters','Flag_trkPOG_manystripclus53X','Flag_trkPOG_toomanystripclus53X']
 #_variations = ['','JESup','JESdown','MESup','MESdown','JERup','JERdown','MER']
 #_variations = ['','JESup','JESdown','JERup','JERdown','MESup','MESdown','MER']#,'EESup','EESdown','EER']
-_variations = ['','JESup','JESdown','JESAbsoluteMPFBiasUp','JESAbsoluteMPFBiasDown','JESAbsoluteScaleUp','JESAbsoluteScaleDown','JESAbsoluteStatUp','JESAbsoluteStatDown','JESFlavorQCDUp','JESFlavorQCDDown','JESFragmentationUp','JESFragmentationDown','JESPileUpDataMCUp','JESPileUpDataMCDown','JESPileUpPtBBUp','JESPileUpPtBBDown','JESPileUpPtEC1Up','JESPileUpPtEC1Down','JESPileUpPtEC2Up','JESPileUpPtEC2Down','JESPileUpPtHFUp','JESPileUpPtHFDown','JESPileUpPtRefUp','JESPileUpPtRefDown','JESRelativeBalUp','JESRelativeBalDown','JESRelativeFSRUp','JESRelativeFSRDown','JESRelativeJEREC1Up','JESRelativeJEREC1Down','JESRelativeJEREC2Up','JESRelativeJEREC2Down','JESRelativeJERHFUp','JESRelativeJERHFDown','JESRelativePtBBUp','JESRelativePtBBDown','JESRelativePtEC1Up','JESRelativePtEC1Down','JESRelativePtEC2Up','JESRelativePtEC2Down','JESRelativePtHFUp','JESRelativePtHFDown','JESRelativeStatECUp','JESRelativeStatECDown','JESRelativeStatFSRUp','JESRelativeStatFSRDown','JESRelativeStatHFUp','JESRelativeStatHFDown','JESSinglePionECALUp','JESSinglePionECALDown','JESSinglePionHCALUp','JESSinglePionHCALDown','JESTimePtEtaUp','JESTimePtEtaDown','JERup','JERdown']#,'MESup','MESdown','MER','EESup','EESdown','EER']
+_variations = ['','JESup','JESdown','JESAbsoluteMPFBiasUp','JESAbsoluteMPFBiasDown','JESAbsoluteScaleUp','JESAbsoluteScaleDown','JESAbsoluteStatUp','JESAbsoluteStatDown',
+'JESFlavorQCDUp','JESFlavorQCDDown','JESFragmentationUp','JESFragmentationDown','JESPileUpDataMCUp','JESPileUpDataMCDown','JESPileUpPtBBUp','JESPileUpPtBBDown',
+'JESPileUpPtEC1Up','JESPileUpPtEC1Down','JESPileUpPtEC2Up','JESPileUpPtEC2Down','JESPileUpPtHFUp','JESPileUpPtHFDown','JESPileUpPtRefUp','JESPileUpPtRefDown',
+'JESRelativeBalUp','JESRelativeBalDown','JESRelativeFSRUp','JESRelativeFSRDown','JESRelativeJEREC1Up','JESRelativeJEREC1Down','JESRelativeJEREC2Up','JESRelativeJEREC2Down',
+'JESRelativeJERHFUp','JESRelativeJERHFDown','JESRelativePtBBUp','JESRelativePtBBDown','JESRelativePtEC1Up','JESRelativePtEC1Down','JESRelativePtEC2Up','JESRelativePtEC2Down',
+'JESRelativePtHFUp','JESRelativePtHFDown','JESRelativeStatECUp','JESRelativeStatECDown','JESRelativeStatFSRUp','JESRelativeStatFSRDown','JESRelativeStatHFUp','JESRelativeStatHFDown',
+'JESSinglePionECALUp','JESSinglePionECALDown','JESSinglePionHCALUp','JESSinglePionHCALDown','JESTimePtEtaUp','JESTimePtEtaDown','JERup','JERdown']#,'MESup','MESdown','MER','EESup','EESdown','EER']
 if nonisoswitch==True or quicktestswitch==True:
 	print 'NOT performing systematics...'
 	_variations = ['']  # For quicker tests
@@ -359,18 +368,13 @@ def GetPURescalingFactors(puversion):
 	# Purpose: To get the pileup reweight factors from the PU_Central.root, PU_Up.root, and PU_Down.root files.
 	#         The MC Truth distribution is taken from https://twiki.cern.ch/twiki/bin/view/CMS/PileupMCReweightingUtilities
 
-	#MCDistSummer12 = [2.560E-06, 5.239E-06, 1.420E-05, 5.005E-05, 1.001E-04, 2.705E-04, 1.999E-03, 6.097E-03, 1.046E-02, 1.383E-02,
-        #              1.685E-02, 2.055E-02, 2.572E-02, 3.262E-02, 4.121E-02, 4.977E-02, 5.539E-02, 5.725E-02, 5.607E-02, 5.312E-02, 5.008E-02, 4.763E-02,
-        #              4.558E-02, 4.363E-02, 4.159E-02, 3.933E-02, 3.681E-02, 3.406E-02, 3.116E-02, 2.818E-02, 2.519E-02, 2.226E-02, 1.946E-02, 1.682E-02,
-        #              1.437E-02, 1.215E-02, 1.016E-02, 8.400E-03, 6.873E-03, 5.564E-03, 4.457E-03, 3.533E-03, 2.772E-03, 2.154E-03, 1.656E-03, 1.261E-03,
-        #              9.513E-04, 7.107E-04, 5.259E-04, 3.856E-04, 2.801E-04, 2.017E-04, 1.439E-04, 1.017E-04, 7.126E-05, 4.948E-05, 3.405E-05, 2.322E-05,
-        #              1.570E-05, 5.005E-06]
-
-	#MCDistStartup15 = [4.8551E-07,1.74806E-06,3.30868E-06,1.62972E-05,4.95667E-05,0.000606966,0.003307249,0.010340741,0.022852296,0.041948781,0.058609363,0.067475755,0.072817826,0.075931405,0.076782504,0.076202319,0.074502547,0.072355135,0.069642102,0.064920999,0.05725576,0.047289348,0.036528446,0.026376131,0.017806872,0.011249422,0.006643385,0.003662904,0.001899681,0.00095614,0.00050028,0.000297353,0.000208717,0.000165856,0.000139974,0.000120481,0.000103826,8.88868E-05,7.53323E-05,6.30863E-05,5.21356E-05,4.24754E-05,3.40876E-05,2.69282E-05,2.09267E-05,1.5989E-05,4.8551E-06,2.42755E-06,4.8551E-07,2.42755E-07,1.21378E-07,4.8551E-08]#fixme todo updated to 2015, from https://github.com/cms-sw/cmssw/blob/CMSSW_7_6_X/SimGeneral/MixingModule/python/mix_2015_25ns_Startup_PoissonOOTPU_cfi.py and https://twiki.cern.ch/twiki/bin/view/CMS/PdmVPileUpDescription#Run_2_and_Upgrades
-
-	#MCDistStartup16 = [0.000829312873542,0.00124276120498,0.00339329181587,0.00408224735376,0.00383036590008,0.00659159288946,0.00816022734493,0.00943640833116,0.0137777376066,0.017059392038,0.0213193035468,0.0247343174676,0.0280848773878,0.0323308476564,0.0370394341409,0.0456917721191,0.0558762890594,0.0576956187107,0.0625325287017,0.0591603758776,0.0656650815128,0.0678329011676,0.0625142146389,0.0548068448797,0.0503893295063,0.040209818868,0.0374446988111,0.0299661572042,0.0272024759921,0.0219328403791,0.0179586571619,0.0142926728247,0.00839941654725,0.00522366397213,0.00224457976761,0.000779274977993,0.000197066585944,7.16031761328e-05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]#Updated to 2016, from https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_X/SimGeneral/MixingModule/python/mix_2016_25ns_SpringMC_PUScenarioV1_PoissonOOTPU_cfi.py and https://twiki.cern.ch/twiki/bin/view/CMS/PdmVPileUpDescription#Run_2_and_Upgrades
-
-	MCDistSummer16 = [1.78653e-05 ,2.56602e-05 ,5.27857e-05 ,8.88954e-05 ,0.000109362 ,0.000140973 ,0.000240998 ,0.00071209 ,0.00130121 ,0.00245255 ,0.00502589 ,0.00919534 ,0.0146697 ,0.0204126 ,0.0267586 ,0.0337697 ,0.0401478 ,0.0450159 ,0.0490577 ,0.0524855 ,0.0548159 ,0.0559937 ,0.0554468 ,0.0537687 ,0.0512055 ,0.0476713 ,0.0435312 ,0.0393107 ,0.0349812 ,0.0307413 ,0.0272425 ,0.0237115 ,0.0208329 ,0.0182459 ,0.0160712 ,0.0142498 ,0.012804 ,0.011571 ,0.010547 ,0.00959489 ,0.00891718 ,0.00829292 ,0.0076195 ,0.0069806 ,0.0062025 ,0.00546581 ,0.00484127 ,0.00407168 ,0.00337681 ,0.00269893 ,0.00212473 ,0.00160208 ,0.00117884 ,0.000859662 ,0.000569085 ,0.000365431 ,0.000243565 ,0.00015688 ,9.88128e-05 ,6.53783e-05 ,3.73924e-05 ,2.61382e-05 ,2.0307e-05 ,1.73032e-05 ,1.435e-05 ,1.36486e-05 ,1.35555e-05 ,1.37491e-05 ,1.34255e-05 ,1.33987e-05 ,1.34061e-05 ,1.34211e-05 ,1.34177e-05 ,1.32959e-05 ,1.33287e-05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]# from https://twiki.cern.ch/twiki/bin/view/CMS/PdmV2016Analysis and https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_X/SimGeneral/MixingModule/python/mix_2016_25ns_Moriond17MC_PoissonOOTPU_cfi.py
+	MCDistSummer16 = [1.78653e-05 ,2.56602e-05 ,5.27857e-05 ,8.88954e-05 ,0.000109362 ,0.000140973 ,0.000240998 ,0.00071209 ,0.00130121 ,0.00245255 ,0.00502589 ,0.00919534 ,
+	0.0146697 ,0.0204126 ,0.0267586 ,0.0337697 ,0.0401478 ,0.0450159 ,0.0490577 ,0.0524855 ,0.0548159 ,0.0559937 ,0.0554468 ,0.0537687 ,0.0512055 ,0.0476713 ,0.0435312 ,
+	0.0393107 ,0.0349812 ,0.0307413 ,0.0272425 ,0.0237115 ,0.0208329 ,0.0182459 ,0.0160712 ,0.0142498 ,0.012804 ,0.011571 ,0.010547 ,0.00959489 ,0.00891718 ,0.00829292 ,
+	0.0076195 ,0.0069806 ,0.0062025 ,0.00546581 ,0.00484127 ,0.00407168 ,0.00337681 ,0.00269893 ,0.00212473 ,0.00160208 ,0.00117884 ,0.000859662 ,0.000569085 ,0.000365431 ,
+	0.000243565 ,0.00015688 ,9.88128e-05 ,6.53783e-05 ,3.73924e-05 ,2.61382e-05 ,2.0307e-05 ,1.73032e-05 ,1.435e-05 ,1.36486e-05 ,1.35555e-05 ,1.37491e-05 ,1.34255e-05 ,
+	1.33987e-05 ,1.34061e-05 ,1.34211e-05 ,1.34177e-05 ,1.32959e-05 ,1.33287e-05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	# from https://twiki.cern.ch/twiki/bin/view/CMS/PdmV2016Analysis and https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_X/SimGeneral/MixingModule/python/mix_2016_25ns_Moriond17MC_PoissonOOTPU_cfi.py
 
 
     # This is the standard (all of 2012) pileup scenario
@@ -553,7 +557,8 @@ SignalM = ['260','270','300','350','400', '450', '500', '550', '600','650', '750
 #--- muon BDT
 reader_22vars_uu = TMVA.Reader("!Color")
 # the order of the variables matters, need to be the same as when training
-_bdtvars_uu = ['Mbb_H','DR_bb_H','Mjj_Z','DR_jj_Z','M_uu','DR_muon1muon2','DR_uu_bb_H','DR_u1Hj1','DR_u1Hj2','DR_u2Hj1','DR_u2Hj2','DR_uu_jj_Z','DR_u1Zj1','DR_u1Zj2','DR_u2Zj1','DR_u2Zj2','abs(cosThetaStarMu)','abs(cosTheta_hbb_uu)','abs(cosTheta_zuu_hzz)','abs(DPhi_muon1met)','abs(phi1_uu)','abs(phi1_zjj_uu)']
+_bdtvars_uu = ['Mbb_H','DR_bb_H','Mjj_Z','DR_jj_Z','M_uu','DR_muon1muon2','DR_uu_bb_H','DR_u1Hj1','DR_u1Hj2','DR_u2Hj1','DR_u2Hj2','DR_uu_jj_Z','DR_u1Zj1','DR_u1Zj2','DR_u2Zj1','DR_u2Zj2',
+'abs(cosThetaStarMu)','abs(cosTheta_hbb_uu)','abs(cosTheta_zuu_hzz)','abs(DPhi_muon1met)','abs(phi1_uu)','abs(phi1_zjj_uu)']
 _bdtvarnames_uu = {}
 for vth in _bdtvars_uu:
 	_bdtvarnames_uu[vth] = array.array('f',[0])
@@ -565,7 +570,8 @@ for ith in range(len(SignalM)):
 
 #--- eletron BDT
 reader_22vars_ee = TMVA.Reader("!Color")
-_bdtvars_ee = ['Mbb_H','DR_bb_H','Mjj_Z','DR_jj_Z','M_ee','DR_ele1ele2','DR_ee_bb_H','DR_e1Hj1','DR_e1Hj2','DR_e2Hj1','DR_e2Hj2','DR_ee_jj_Z','DR_e1Zj1','DR_e1Zj2','DR_e2Zj1','DR_e2Zj2','abs(cosThetaStarEle)','abs(cosTheta_hbb_ee)','abs(cosTheta_zee_hzz)','abs(DPhi_ele1met)','abs(phi1_ee)','abs(phi1_zjj_ee)']
+_bdtvars_ee = ['Mbb_H','DR_bb_H','Mjj_Z','DR_jj_Z','M_ee','DR_ele1ele2','DR_ee_bb_H','DR_e1Hj1','DR_e1Hj2','DR_e2Hj1','DR_e2Hj2','DR_ee_jj_Z','DR_e1Zj1','DR_e1Zj2','DR_e2Zj1','DR_e2Zj2',
+'abs(cosThetaStarEle)','abs(cosTheta_hbb_ee)','abs(cosTheta_zee_hzz)','abs(DPhi_ele1met)','abs(phi1_ee)','abs(phi1_zjj_ee)']
 _bdtvarnames_ee = {}
 for vth in _bdtvars_ee:
 	_bdtvarnames_ee[vth] = array.array('f',[0])
@@ -1655,11 +1661,11 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 	else:
 		_ElectronPt = [pt for pt in T.Electron_pt]
 
+	isoFlag = []
+	noIsoFlag = []
 	trk_isos = []
 	charges = []
 	deltainvpts = []
-#?	pfid = []
-#?	layers = []
 	_idIsoSFs=[]
 	_idIsoSFsUp=[]
 	_idIsoSFsDown=[]
@@ -1670,107 +1676,47 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 	_hlt2SFsUp=[]
 	_hlt2SFsDown=[]
 
-	for n in range(len(_ElectronPt)):
+	for n, pt in enumerate(_ElectronPt):
 		Pass = True
-		Pass *= (T.Electron_pt[n] > 12)
+		Pass *= (T.Electron_pt[n]>12)
 		Pass *= abs(T.Electron_eta[n])<2.5
 
 		barrel = (abs(T.Electron_eta[n]))<1.442
 		endcap = (abs(T.Electron_eta[n]))>1.56
-#?		barrel = (abs(T.ElectronSCEta[n]))<1.442
-#?		endcap = (abs(T.ElectronSCEta[n]))>1.56
 		Pass *= (barrel+endcap)
-
-	        Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
 
 	        if (barrel):
 			Pass *= abs(T.Electron_dxy[n])<0.05
-			Pass *= abs(T.Electron_dz[n]) <0.10
+			Pass *= abs(T.Electron_dz[n])<0.10
 		elif (endcap):
-			Pass *= abs(T.Electron_dxy[n])< 0.10
-			Pass *= abs(T.Electron_dz[n]) < 0.20
-
-		"""
-	        ecal_energy_inverse = 1.0/T.ElectronEcalEnergy[n]
-		eSCoverP = T.ElectronESuperClusterOverP[n]
-
-                #HLT-safe cuts, except iso which is in nonisoswitch below
-		#fixme removing hlt-safe cuts for now
-
-        	if (barrel):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.011
-	                Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.060
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        #Pass *= T.ElectronNormalizedChi2[n]<
-        	elif (endcap):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.031
-	                #Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        #Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.065
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        Pass *= T.ElectronNormalizedChi2[n]<3.0
-
-		#Isolation
-		chad = T.ElectronPFChargedHadronIso03[n]
-		nhad = T.ElectronPFNeutralHadronIso03[n]
-		pho  = T.ElectronPFPhotonIso03[n]
-
-		eA = getElectronEffectiveArea(T.Electron_eta[n])
-		iso = chad + max(0.0, nhad + pho - T.ElectronRhoIsoHEEP[n]*eA)
-		iso = iso/_ElectronPt[n]
-
-		"""
+			Pass *= abs(T.Electron_dxy[n])<0.10
+			Pass *= abs(T.Electron_dz[n])<0.20
 
 		iso=T.Electron_pfRelIso03_all[n]
+
+	        Pass *= (T.Electron_mvaFall17V2noIso_WP90[n]+T.Electron_mvaFall17V2Iso_WP90[n])>0
+
 		# Don't apply isolation for QCD studies
-		if nonisoswitch != True:
-			if (barrel):
-        			if _year=='2016':
-					Pass *= iso<0.15
-					#Pass *= iso<0.0588
-        			else:
-					Pass *= iso<(0.0287+(0.506/_ElectronPt[n]))
-				#Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
-				#Pass *= iso<0.15#ZH(bb)
-		                #fixme removing hlt-safe cuts for now
-		                #Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.165*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.160
-		                #Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.060*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
-			elif (endcap):
-        			if _year=='2016':
-					Pass *= iso<0.15
-					#Pass *= iso<0.0571
-        			else:
-					Pass *= iso<(0.0445+(0.963/_ElectronPt[n]))
-				#Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
-				#Pass *= iso<0.15#ZH(bb)
-                                #fixme removing hlt-safe cuts for now
-		                #Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.132*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-	                	#Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
+		if nonisoswitch == False:
+			Pass *= T.Electron_mvaFall17V2Iso_WP90[n]
 
 		[_idIsoSF,_idIsoSFUp,_idIsoSFDown,_hlt1SF,_hlt1SFup,_hlt1SFdown,_hlt2SF,_hlt2SFup,_hlt2SFdown] = getSFelectron(_ElectronPt[n],T.Electron_eta[n])
-#?		[_idIsoSF,_idIsoSFUp,_idIsoSFDown,_hlt1SF,_hlt1SFup,_hlt1SFdown,_hlt2SF,_hlt2SFup,_hlt2SFdown] = getSFelectron(_ElectronPt[n],T.ElectronSCEta[n]) need SCEta above?
 
 		if (Pass):
 			NewEl = TLorentzVector()
 			OldEl = TLorentzVector()
 			NewEl.SetPtEtaPhiM(_ElectronPt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
 			OldEl.SetPtEtaPhiM(T.Electron_pt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-#?			NewEl.SetPtEtaPhiM(_ElectronPt[n],T.ElectronSCEta[n],T.Electron_phi[n],0)
-#?			OldEl.SetPtEtaPhiM(T.Electron_pt[n],T.ElectronSCEta[n],T.Electron_phi[n],0)
 			met = PropagatePTChangeToMET(_met,OldEl,NewEl)
 
 		if (Pass):
 			electrons.append(NewEl)
 			electroninds.append(n)
+			isoFlag.append(T.Electron_mvaFall17V2Iso_WP90[n])
+			noIsoFlag.append(T.Electron_mvaFall17V2noIso_WP90[n])
 			trk_isos.append(iso)
 			charges.append(T.Electron_charge[n])
 			deltainvpts.append(0.)
-#?			pfid.append(0.)
-#?			layers.append(0.)
 			_idIsoSFs.append(_idIsoSF)
 			_idIsoSFsUp.append(_idIsoSFUp)
 			_idIsoSFsDown.append(_idIsoSFDown)
@@ -1781,7 +1727,7 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 			_hlt2SFsUp.append(_hlt2SFup)
 			_hlt2SFsDown.append(_hlt2SFdown)
 
-	return [electrons,electroninds,_met,trk_isos,charges,_idIsoSFs,_idIsoSFsUp,_idIsoSFsDown,_hlt1SFs,_hlt1SFsUp,_hlt1SFsDown,_hlt2SFs,_hlt2SFsUp,_hlt2SFsDown]
+	return [electrons,electroninds,_met,isoFlag,noIsoFlag,trk_isos,charges,_idIsoSFs,_idIsoSFsUp,_idIsoSFsDown,_hlt1SFs,_hlt1SFsUp,_hlt1SFsDown,_hlt2SFs,_hlt2SFsUp,_hlt2SFsDown]
 
 
 def LooseElectrons(T,_met,variation,isdata):
@@ -2802,10 +2748,12 @@ def GetHHJetsNew(jets,btagScoresCSV,btagScoresMVA,bTagSFloose,bTagSFmed,bTagSFlo
 			else:
 				for j in range(len(btagScoresMVA)) :
 					#if T.PFJetPartonFlavourAK4CHS[jetinds[j]] == 21 : continue  # for testing the effect of gluon jets
-					#if btagScoresCSV[j] < 0.06  and abs(-0.853212237358 - btagScoresMVA[j]) < 0.000000000002 : continue # if I want to include this condition I have to put somthing tighter, because there are bjets with this condition as well
+					#if btagScoresCSV[j] < 0.06  and abs(-0.853212237358 - btagScoresMVA[j]) < 0.000000000002 : continue # if I want to include this condition I have to put somthing tighter,
+					#because there are bjets with this condition as well
 					if j==jet1index or j==jet2index: continue
 					if j==highBtagCounter: continue
-					#if v == '' : print ' debug 1 high bscore : index i', jetinds[highBtagCounter], 'index j', jetinds[j],'m_bb',(jets[highBtagCounter]+jets[j]).M(), ' diff', abs((jets[highBtagCounter]+jets[j]).M()-125), 'dR', abs(jets[highBtagCounter].DeltaR(jets[j]))
+					#if v == '' : print ' debug 1 high bscore : index i', jetinds[highBtagCounter], 'index j', jetinds[j],'m_bb',(jets[highBtagCounter]+jets[j]).M(), ' diff', abs((jets[highBtagCounter]+jets[j]).M()-125),
+					#'dR', abs(jets[highBtagCounter].DeltaR(jets[j]))
 					if abs((jets[highBtagCounter]+jets[j]).M()-125) < closestH and (jets[highBtagCounter]+jets[j]).M() > 0 :
 						closestH = abs((jets[highBtagCounter]+jets[j]).M()-125)
 						secondBtagCounter = j
@@ -2994,7 +2942,9 @@ def GetHHJetsNew(jets,btagScoresCSV,btagScoresMVA,bTagSFloose,bTagSFmed,bTagSFlo
 	regr_bjet1.SetPtEtaPhiE(regr_corrF1*bjet1.Pt(), bjet1.Eta(), bjet1.Phi(), regr_corrF1*bjet1.Energy())
 	regr_bjet2.SetPtEtaPhiE(regr_corrF2*bjet2.Pt(), bjet2.Eta(), bjet2.Phi(), regr_corrF2*bjet2.Energy())
 	#if v == '' : print ' regr_corrF1 ', regr_corrF1, ' regr_corrF2 ', regr_corrF2
-	return [bjet1,highBtagCSV,highBtag,bjet2,secondBtagCSV,secondBtag,jet1,jet2,jet3,jet1CISV,jet2CISV,jet1CMVA,jet2CMVA,indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,regr_bjet1,regr_bjet2,Hjet1BtagSFL,Hjet1BtagSFM,Hjet2BtagSFL,Hjet2BtagSFM,Zjet1BtagSFL,Zjet1BtagSFM,Zjet2BtagSFL,Zjet2BtagSFM,Hjet1BtagSFL_csv,Hjet1BtagSFM_csv,Hjet2BtagSFL_csv,Hjet2BtagSFM_csv,Zjet1BtagSFL_csv,Zjet1BtagSFM_csv,Zjet2BtagSFL_csv,Zjet2BtagSFM_csv]
+	return [bjet1,highBtagCSV,highBtag,bjet2,secondBtagCSV,secondBtag,jet1,jet2,jet3,jet1CISV,jet2CISV,jet1CMVA,jet2CMVA,indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,
+	regr_bjet1,regr_bjet2,Hjet1BtagSFL,Hjet1BtagSFM,Hjet2BtagSFL,Hjet2BtagSFM,Zjet1BtagSFL,Zjet1BtagSFM,Zjet2BtagSFL,Zjet2BtagSFM,
+	Hjet1BtagSFL_csv,Hjet1BtagSFM_csv,Hjet2BtagSFL_csv,Hjet2BtagSFM_csv,Zjet1BtagSFL_csv,Zjet1BtagSFM_csv,Zjet2BtagSFL_csv,Zjet2BtagSFM_csv]
 
 #def bjetRegressionCorrectionFactor(RegressionReader, _regrvarsnames, bjet, ind_orig, T, met):
 #	# see https://github.com/ResonantHbbHgg/bbggTools/blob/master/src/bbggJetRegression.cc#L229
@@ -3138,7 +3088,11 @@ def AK8calculateBDTdiscriminant(reader, classifierTag, _bdtvarnames, T, Pt_muon1
 		bdtAK8Zjet = jets_AK8[highestjetindZ]
 	return (bdtAK8Hjet, bdtAK8Zjet, highestbdtdisc, highestbdtdiscZ, highestjetind, highestjetindZ)
 
-def calculateBDTdiscriminant(reader, classifierTag, _bdtvarnames, _Mll4j, _Mbb_H, _Mjj_Z, _Mll, _Mlljj, _ptlep1, _ptlep2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ll, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRll, _phi0_ll, _phi1_ll, _phi0_zz_ll, _phi1_zll, _phi1_zjj_ll, bscoreMVA1, bscoreMVA2, _dRl1Hj1, _dRl1Hj2, _dRl2Hj1, _dRl2Hj2, _dRl1Zj1, _dRl1Zj2, _dRl2Zj1, _dRl2Zj2, _dRllbb_H, _dRlljj_Z, _cosThetaStarLep, _cosTheta_hbb_ll, _cosTheta_zll_hzz, _cosThetaStar_ll, _cosThetaStarZll_CS, _cosTheta_Zll, _etalep1, _etalep2, _philep1, _philep2, _DPHIlv, _dPHIlljj_Z, _dPHIllbb_H, _dPhibb_H, _dPhijj_Z) :
+def calculateBDTdiscriminant(reader, classifierTag, _bdtvarnames, _Mll4j, _Mbb_H, _Mjj_Z, _Mll, _Mlljj, _ptlep1, _ptlep2, _ptmet,
+_Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ll, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRll, _phi0_ll, _phi1_ll, _phi0_zz_ll, _phi1_zll, _phi1_zjj_ll,
+bscoreMVA1, bscoreMVA2, _dRl1Hj1, _dRl1Hj2, _dRl2Hj1, _dRl2Hj2, _dRl1Zj1, _dRl1Zj2, _dRl2Zj1, _dRl2Zj2, _dRllbb_H, _dRlljj_Z,
+_cosThetaStarLep, _cosTheta_hbb_ll, _cosTheta_zll_hzz, _cosThetaStar_ll, _cosThetaStarZll_CS, _cosTheta_Zll,
+_etalep1, _etalep2, _philep1, _philep2, _DPHIlv, _dPHIlljj_Z, _dPHIllbb_H, _dPhibb_H, _dPhijj_Z) :
 
 	if 'M_uu4j'                in _bdtvarnames: _bdtvarnames['M_uu4j'][0]                = _Mll4j
 	if 'Mbb_H'                 in _bdtvarnames: _bdtvarnames['Mbb_H'][0]			     = _Mbb_H
@@ -3254,10 +3208,12 @@ def calculateBDTdiscriminant(reader, classifierTag, _bdtvarnames, _Mll4j, _Mbb_H
 	## MET cut is not needed here, TMVA will calculate bdt score (because MET variable is not used) ?, but we will put the cut in analysis level anyway
 
 	if 'DR_muon1muon2' in _bdtvarnames:
-		if (_ptlep1 > 20 and _ptlep2 > 10 and _Pt_Hjet1 > 20 and _Pt_Hjet2 > 20 and _Pt_Zjet1 > 20 and _Pt_Zjet2 > 20 and _Mll > 15) :			out_bdtdisc = reader.EvaluateMVA(classifierTag)
+		if (_ptlep1 > 20 and _ptlep2 > 10 and _Pt_Hjet1 > 20 and _Pt_Hjet2 > 20 and _Pt_Zjet1 > 20 and _Pt_Zjet2 > 20 and _Mll > 15) :
+			out_bdtdisc = reader.EvaluateMVA(classifierTag)
 			#print classifierTag,' out_bdtdisc ', out_bdtdisc
 	elif 'DR_ele1ele2' in _bdtvarnames:
-		if (_ptlep1 > 25 and _ptlep2 > 15 and _Pt_Hjet1 > 20 and _Pt_Hjet2 > 20 and _Pt_Zjet1 > 20 and _Pt_Zjet2 > 20 and _Mll > 15) :			out_bdtdisc = reader.EvaluateMVA(classifierTag)
+		if (_ptlep1 > 25 and _ptlep2 > 15 and _Pt_Hjet1 > 20 and _Pt_Hjet2 > 20 and _Pt_Zjet1 > 20 and _Pt_Zjet2 > 20 and _Mll > 15) :
+			out_bdtdisc = reader.EvaluateMVA(classifierTag)
 			#print classifierTag,' out_bdtdisc ', out_bdtdisc
 	#if v == '' : print ' out_bdtdisc ', out_bdtdisc
 	return out_bdtdisc
@@ -3525,16 +3481,20 @@ def FullKinematicCalculation(T,variation):
 	[muons,goodmuoninds,met,trkisosMu,chargesMu,dpts,pfid,layers] = MediumIDMuons(T,met,variation,isData)
 	# muons_forjetsep = MuonsForJetSeparation(T)
 	# taus_forjetsep = TausForJetSeparation(T)
-	[electrons,electroninds,met,trkisosEle,chargesEle,idIsoSFEle,idIsoSFEleUp,idIsoSFEleDown,hlt1SFEle,hlt1SFEleUp,hlt1SFEleDown,hlt2SFEle,hlt2SFEleUp,hlt2SFEleDown] = mvaWP90Electrons(T,met,variation,isData)
+	[electrons,electroninds,met,flag_isoEle,flag_noIsoEle,trkisosEle,chargesEle,idIsoSFEle,idIsoSFEleUp,idIsoSFEleDown,hlt1SFEle,hlt1SFEleUp,hlt1SFEleDown,hlt2SFEle,hlt2SFEleUp,hlt2SFEleDown] = mvaWP90Electrons(T,met,variation,isData)
 	# ID Jets and filter from leptons
 	[jets,jetinds,met,failthreshold,neutralhadronEF,neutralemEF,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs] = LooseIDJets(T,met,variation,isData)
 	#jetsTemp = jets
 	_jetCntPreFilter = len(jets)
 	## jets = GeomFilterCollection(jets,muons_forjetsep,0.5)
 
-#	[jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds] = GeomFilterCollection(jets,muons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
+#	[jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds]
+#	= GeomFilterCollection(jets,muons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)
+#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
 	#FIXME removing filter from electrons for now, since we don't use electron channel
-#        [jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds] = GeomFilterCollection(jets,electrons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
+#        [jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds]
+#	= GeomFilterCollection(jets,electrons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)
+#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
 
 	##[jetsTemp,jetinds] = GeomFilterCollection(jetsTemp,muons,0.3,jetinds)
 	##[jetsTemp,jetinds] = GeomFilterCollection(jetsTemp,electrons,0.3,jetinds)
@@ -3563,6 +3523,8 @@ def FullKinematicCalculation(T,variation):
 
 	if len(electrons) < 1 :
 		electrons.append(EmptyLorentz)
+		flag_isoEle.append(0.0)
+		flag_noIsoEle.append(0.0)
 		trkisosEle.append(0.0)
 		chargesEle.append(0.0)
 		idIsoSFEle.append(0.0)
@@ -3576,6 +3538,8 @@ def FullKinematicCalculation(T,variation):
 		hlt2SFEleDown.append(0.0)
 	if len(electrons) < 2 :
 		electrons.append(EmptyLorentz)
+		flag_isoEle.append(0.0)
+		flag_noIsoEle.append(0.0)
 		trkisosEle.append(0.0)
 		chargesEle.append(0.0)
 		idIsoSFEle.append(0.0)
@@ -3700,36 +3664,6 @@ def FullKinematicCalculation(T,variation):
 
 	leptons,_genLeptonsZ,_matchedRecoLeptonsZ=[],[],[]
 	_isMuonEvent,_isElectronEvent = False,False
-	#if muons[0].Pt()>=electrons[0].Pt() or electrons[1].Pt()<1:#prioritize muons: cases where muon1 pt > ele1 pt, or where there is no 2nd electron
-	#	if electrons[0]>16 and electrons[1]>8 and muons[1]<8:#single case where first muon pt is higher, but there is only one good muon and 2 valid electrons
-	#		leptons = electrons
-	#		charges = chargesEle
-	#		trkisos = trkisosEle
-	#		_genLeptonsZ=_genElectronsZ
-	#		_matchedRecoLeptonsZ=_matchedRecoElectronsZ
-	#		_isElectronEvent=True
-	#	else:
-	#		leptons = muons
-	#		charges = chargesMu
-	#		trkisos = trkisosMu
-	#		_genLeptonsZ=_genMuonsZ
-	#		_matchedRecoLeptonsZ=_matchedRecoMuonsZ
-	#		_isMuonEvent=True
-	#else:#cases where ele1 pt > muon1 pt
-	#	if muons[0]>16 and muons[1]>8 and electrons[1]<8:#single case where first electron pt is higher, but there is only one good electron and 2 valid muons
-	#		leptons = muons
-	#		charges = chargesMu
-	#		trkisos = trkisosMu
-	#		_genLeptonsZ=_genMuonsZ
-	#		_matchedRecoLeptonsZ=_matchedRecoMuonsZ
-	#		_isMuonEvent=True
-	#	else:
-	#		leptons = electrons
-	#		charges = chargesEle
-	#		trkisos = trkisosEle
-	#		_genLeptonsZ=_genElectronsZ
-	#		_matchedRecoLeptonsZ=_matchedRecoElectronsZ
-	#		_isElectronEvent=True
 
 	if electrons[0].Pt()>25 and electrons[1].Pt()>15:
 		leptons = electrons
@@ -3763,6 +3697,9 @@ def FullKinematicCalculation(T,variation):
 
 	[_ptele1,_etaele1,_phiele1,_isoele1,_qele1] = [electrons[0].Pt(),electrons[0].Eta(),electrons[0].Phi(),trkisosEle[0],chargesEle[0]]
 	[_ptele2,_etaele2,_phiele2,_isoele2,_qele2] = [electrons[1].Pt(),electrons[1].Eta(),electrons[1].Phi(),trkisosEle[1],chargesEle[1]]
+
+	[_flag_isoele1,_flag_noisoele1] = [flag_isoEle[0],flag_noIsoEle[0]]
+	[_flag_isoele2,_flag_noisoele2] = [flag_isoEle[1],flag_noIsoEle[1]]
 
 	[_ele1IDandIsoSF,_ele1IDandIsoSFup,_ele1IDandIsoSFdown]=[idIsoSFEle[0],idIsoSFEleUp[0],idIsoSFEleDown[0]]
 	[_ele2IDandIsoSF,_ele2IDandIsoSFup,_ele2IDandIsoSFdown]=[idIsoSFEle[1],idIsoSFEleUp[1],idIsoSFEleDown[1]]
@@ -3855,7 +3792,15 @@ def FullKinematicCalculation(T,variation):
 	[bjet1,bscore1,bscoreMVA1,bjet2,bscore2,bscoreMVA2,jet1,jet2,jet3,indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3] = [EmptyLorentz,-5.0,-5.0,EmptyLorentz,-5.0,-5.0,EmptyLorentz,EmptyLorentz,EmptyLorentz,-1,-1,-1,-1,-1]
 	[unreg_bjet1,unreg_bjet2] = [EmptyLorentz,EmptyLorentz]
 
-	[unreg_bjet1,bscore1,bscoreMVA1,unreg_bjet2,bscore2,bscoreMVA2,jet1,jet2,jet3,_cisv_Zjet1,_cisv_Zjet2,_cmva_Zjet1,_cmva_Zjet2,indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,bjet1,bjet2,_Hjet1BtagSFL,_Hjet1BtagSFM,_Hjet2BtagSFL,_Hjet2BtagSFM,_Zjet1BtagSFL,_Zjet1BtagSFM,_Zjet2BtagSFL,_Zjet2BtagSFM,_Hjet1BtagSFL_csv,_Hjet1BtagSFM_csv,_Hjet2BtagSFL_csv,_Hjet2BtagSFM_csv,_Zjet1BtagSFL_csv,_Zjet1BtagSFM_csv,_Zjet2BtagSFL_csv,_Zjet2BtagSFM_csv] = GetHHJetsNew(jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,muons[0],muons[1],electrons[0],electrons[1],_isMuonEvent,_isElectronEvent,jetinds, T, met)
+	[unreg_bjet1,bscore1,bscoreMVA1,unreg_bjet2,bscore2,bscoreMVA2,jet1,jet2,jet3,
+	_cisv_Zjet1,_cisv_Zjet2,_cmva_Zjet1,_cmva_Zjet2,
+	indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,bjet1,bjet2,
+	_Hjet1BtagSFL,_Hjet1BtagSFM,_Hjet2BtagSFL,_Hjet2BtagSFM,
+	_Zjet1BtagSFL,_Zjet1BtagSFM,_Zjet2BtagSFL,_Zjet2BtagSFM,
+	_Hjet1BtagSFL_csv,_Hjet1BtagSFM_csv,_Hjet2BtagSFL_csv,_Hjet2BtagSFM_csv,
+	_Zjet1BtagSFL_csv,_Zjet1BtagSFM_csv,_Zjet2BtagSFL_csv,_Zjet2BtagSFM_csv] = GetHHJetsNew(
+	jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,
+	muons[0],muons[1],electrons[0],electrons[1],_isMuonEvent,_isElectronEvent,jetinds, T, met)
 
 	[_Hjet1BsfLoose,_Hjet1BsfLooseUp,_Hjet1BsfLooseDown] = _Hjet1BtagSFL
 	[_Hjet1BsfMedium,_Hjet1BsfMediumUp,_Hjet1BsfMediumDown] = _Hjet1BtagSFM
@@ -3881,7 +3826,8 @@ def FullKinematicCalculation(T,variation):
 	#if muons[0].Pt()>20 and muons[1].Pt()>10 and variation=='':
 	if variation=='':
 		print '    bjet1score, bjet2score, Hmass, Zmass, ZMuMass, uu4jMass, indexbj1, indexbj2, indexj1, indexj2, indexj3 '
-		print '1: ',bscore1,bscore2,(bjet1+bjet2).M(),(jet1+jet2).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1+jet2).M(),indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,bjet1.Pt(),bjet2.Pt(),jet1.Pt(),jet2.Pt(),jet3.Pt(), ' ' ,jetIndH[0],jetIndH[1],jetIndZ[0],jetIndZ[1]
+		print '1: ',bscore1,bscore2,(bjet1+bjet2).M(),(jet1+jet2).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1+jet2).M(),
+		indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,bjet1.Pt(),bjet2.Pt(),jet1.Pt(),jet2.Pt(),jet3.Pt(), ' ' ,jetIndH[0],jetIndH[1],jetIndZ[0],jetIndZ[1]
 
 		print '2: ',bscore1_2,bscore2_2,(bjet1_2+bjet2_2).M(),(jet1_2+jet2_2).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1_2+jet2_2).M()
 		print '3: ',bscore1_3,bscore2_3,(bjet1_3+bjet2_3).M(),(jet1_3+jet2_3).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1_3+jet2_3).M()
@@ -3928,7 +3874,8 @@ def FullKinematicCalculation(T,variation):
 #			for i in range(len(jets)) :
 #				if T.PFJetPartonFlavourAK4CHS[jetinds[i]] == 21: continue
 #				#if T.PFJetCombinedInclusiveSecondaryVertexBTagAK4CHS[jetinds[i]] < 0.06: continue
-#				print '   After Filter Recojet index',jetinds[i], 'flavor', T.PFJetPartonFlavourAK4CHS[jetinds[i]],  'pt',jets[i].Pt(),'eta',jets[i].Eta(), 'phi',jets[i].Phi() ,'btagScores', btagMVAscores[i], 'CSVScore', btagCSVscores[i], 'pileupMVA',T.PFJetPileupMVAAK4CHS[jetinds[i]], T.PFJetPileupMVApassesLooseAK4CHS[jetinds[i]],T.PFJetPileupMVApassesMediumAK4CHS[jetinds[i]],T.PFJetPileupMVApassesTightAK4CHS[jetinds[i]]
+#				print '   After Filter Recojet index',jetinds[i], 'flavor', T.PFJetPartonFlavourAK4CHS[jetinds[i]],  'pt',jets[i].Pt(),'eta',jets[i].Eta(), 'phi',jets[i].Phi() ,'btagScores', btagMVAscores[i],
+#				'CSVScore', btagCSVscores[i], 'pileupMVA',T.PFJetPileupMVAAK4CHS[jetinds[i]], T.PFJetPileupMVApassesLooseAK4CHS[jetinds[i]],T.PFJetPileupMVApassesMediumAK4CHS[jetinds[i]],T.PFJetPileupMVApassesTightAK4CHS[jetinds[i]]
 #
 #			print 'matched bjet indices:',jetIndH
 #			print 'matched  jet indices:',jetIndZ
@@ -4171,24 +4118,48 @@ def FullKinematicCalculation(T,variation):
 	#-- muon bdt
 	_uu_s0_bdt_discrims = [-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0]
 	for kth in range(len(_uu_s0_bdt_discrims)):
-		_uu_s0_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_uu, str("BDT_classifier_22vars_s0_uu_M" + SignalM[kth]), _bdtvarnames_uu, _Muu4j, _Mbb_H, _Mjj_Z, _Muu, _Muujj, _ptmu1, _ptmu2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_uu, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRuu, _phi0_uu, _phi1_uu, _phi0_zz_uu, _phi1_zuu, _phi1_zjj_uu, bscoreMVA1, bscoreMVA2, _dRu1Hj1, _dRu1Hj2, _dRu2Hj1, _dRu2Hj2, _dRu1Zj1, _dRu1Zj2, _dRu2Zj1, _dRu2Zj2, _dRuubb_H, _dRuujj_Z, _cosThetaStarMu, _cosTheta_hbb_uu, _cosTheta_zuu_hzz, _cosThetaStar_uu, _cosThetaStarZuu_CS, _cosTheta_Zuu, _etamu1, _etamu2, _phimu1, _phimu2, _DPHIuv, _dPHIuujj_Z, _dPHIuubb_H, _dPhibb_H, _dPhijj_Z)
-	[_uu_s0_bdt_discrim_M260, _uu_s0_bdt_discrim_M270, _uu_s0_bdt_discrim_M300, _uu_s0_bdt_discrim_M350, _uu_s0_bdt_discrim_M400, _uu_s0_bdt_discrim_M450, _uu_s0_bdt_discrim_M500, _uu_s0_bdt_discrim_M550, _uu_s0_bdt_discrim_M600, _uu_s0_bdt_discrim_M650, _uu_s0_bdt_discrim_M750, _uu_s0_bdt_discrim_M800, _uu_s0_bdt_discrim_M900, _uu_s0_bdt_discrim_M1000] = _uu_s0_bdt_discrims
+		_uu_s0_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_uu, str("BDT_classifier_22vars_s0_uu_M" + SignalM[kth]), _bdtvarnames_uu, _Muu4j, _Mbb_H, _Mjj_Z, _Muu, _Muujj,
+		_ptmu1, _ptmu2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_uu, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRuu, _phi0_uu, _phi1_uu, _phi0_zz_uu, _phi1_zuu, _phi1_zjj_uu,
+		bscoreMVA1, bscoreMVA2, _dRu1Hj1, _dRu1Hj2, _dRu2Hj1, _dRu2Hj2, _dRu1Zj1, _dRu1Zj2, _dRu2Zj1, _dRu2Zj2, _dRuubb_H, _dRuujj_Z,
+		_cosThetaStarMu, _cosTheta_hbb_uu, _cosTheta_zuu_hzz, _cosThetaStar_uu, _cosThetaStarZuu_CS, _cosTheta_Zuu,
+		_etamu1, _etamu2, _phimu1, _phimu2, _DPHIuv, _dPHIuujj_Z, _dPHIuubb_H, _dPhibb_H, _dPhijj_Z)
+
+	[_uu_s0_bdt_discrim_M260, _uu_s0_bdt_discrim_M270, _uu_s0_bdt_discrim_M300, _uu_s0_bdt_discrim_M350, _uu_s0_bdt_discrim_M400, _uu_s0_bdt_discrim_M450, _uu_s0_bdt_discrim_M500,
+	_uu_s0_bdt_discrim_M550, _uu_s0_bdt_discrim_M600, _uu_s0_bdt_discrim_M650, _uu_s0_bdt_discrim_M750, _uu_s0_bdt_discrim_M800, _uu_s0_bdt_discrim_M900, _uu_s0_bdt_discrim_M1000] = _uu_s0_bdt_discrims
 	#if v == '' : print ' _uu_bdt_discrims ', _uu_bdt_discrims
 	#if v == '' : print ' each bdt         ', _uu_bdt_discrim_M260, _uu_bdt_discrim_M270, _uu_bdt_discrim_M300, _uu_bdt_discrim_M350, _uu_bdt_discrim_M400
 	_uu_s2_bdt_discrims = [-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0]
 	for kth in range(len(_uu_s2_bdt_discrims)):
-		_uu_s2_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_uu, str("BDT_classifier_22vars_s2_uu_M" + SignalM[kth]), _bdtvarnames_uu, _Muu4j, _Mbb_H, _Mjj_Z, _Muu, _Muujj, _ptmu1, _ptmu2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_uu, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRuu, _phi0_uu, _phi1_uu, _phi0_zz_uu, _phi1_zuu, _phi1_zjj_uu, bscoreMVA1, bscoreMVA2, _dRu1Hj1, _dRu1Hj2, _dRu2Hj1, _dRu2Hj2, _dRu1Zj1, _dRu1Zj2, _dRu2Zj1, _dRu2Zj2, _dRuubb_H, _dRuujj_Z, _cosThetaStarMu, _cosTheta_hbb_uu, _cosTheta_zuu_hzz, _cosThetaStar_uu, _cosThetaStarZuu_CS, _cosTheta_Zuu, _etamu1, _etamu2, _phimu1, _phimu2, _DPHIuv, _dPHIuujj_Z, _dPHIuubb_H, _dPhibb_H, _dPhijj_Z)
-	[_uu_s2_bdt_discrim_M260, _uu_s2_bdt_discrim_M270, _uu_s2_bdt_discrim_M300, _uu_s2_bdt_discrim_M350, _uu_s2_bdt_discrim_M400, _uu_s2_bdt_discrim_M450, _uu_s2_bdt_discrim_M500, _uu_s2_bdt_discrim_M550, _uu_s2_bdt_discrim_M600, _uu_s2_bdt_discrim_M650, _uu_s2_bdt_discrim_M750, _uu_s2_bdt_discrim_M800, _uu_s2_bdt_discrim_M900, _uu_s2_bdt_discrim_M1000] = _uu_s2_bdt_discrims
+		_uu_s2_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_uu, str("BDT_classifier_22vars_s2_uu_M" + SignalM[kth]), _bdtvarnames_uu, _Muu4j, _Mbb_H, _Mjj_Z, _Muu, _Muujj,
+		_ptmu1, _ptmu2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_uu, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRuu, _phi0_uu, _phi1_uu, _phi0_zz_uu, _phi1_zuu, _phi1_zjj_uu,
+		bscoreMVA1, bscoreMVA2, _dRu1Hj1, _dRu1Hj2, _dRu2Hj1, _dRu2Hj2, _dRu1Zj1, _dRu1Zj2, _dRu2Zj1, _dRu2Zj2, _dRuubb_H, _dRuujj_Z,
+		_cosThetaStarMu, _cosTheta_hbb_uu, _cosTheta_zuu_hzz, _cosThetaStar_uu, _cosThetaStarZuu_CS, _cosTheta_Zuu,
+		_etamu1, _etamu2, _phimu1, _phimu2, _DPHIuv, _dPHIuujj_Z, _dPHIuubb_H, _dPhibb_H, _dPhijj_Z)
+
+	[_uu_s2_bdt_discrim_M260, _uu_s2_bdt_discrim_M270, _uu_s2_bdt_discrim_M300, _uu_s2_bdt_discrim_M350, _uu_s2_bdt_discrim_M400, _uu_s2_bdt_discrim_M450, _uu_s2_bdt_discrim_M500,
+	_uu_s2_bdt_discrim_M550, _uu_s2_bdt_discrim_M600, _uu_s2_bdt_discrim_M650, _uu_s2_bdt_discrim_M750, _uu_s2_bdt_discrim_M800, _uu_s2_bdt_discrim_M900, _uu_s2_bdt_discrim_M1000] = _uu_s2_bdt_discrims
 
 	#-- electron bdt
 	_ee_s0_bdt_discrims = [-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0]
 	for kth in range(len(_ee_s0_bdt_discrims)):
-		_ee_s0_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_ee, str("BDT_classifier_22vars_s0_ee_M" + SignalM[kth]), _bdtvarnames_ee, _Mee4j, _Mbb_H, _Mjj_Z, _Mee, _Meejj, _ptele1, _ptele2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ee, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRee, _phi0_ee, _phi1_ee, _phi0_zz_ee, _phi1_zee, _phi1_zjj_ee, bscoreMVA1, bscoreMVA2, _dRe1Hj1, _dRe1Hj2, _dRe2Hj1, _dRe2Hj2, _dRe1Zj1, _dRe1Zj2, _dRe2Zj1, _dRe2Zj2, _dReebb_H, _dReejj_Z, _cosThetaStarEle, _cosTheta_hbb_ee, _cosTheta_zee_hzz, _cosThetaStar_ee, _cosThetaStarZee_CS, _cosTheta_Zee, _etaele1, _etaele2, _phiele1, _phiele2, _DPHIev, _dPHIeejj_Z, _dPHIeebb_H, _dPhibb_H, _dPhijj_Z)
-	[_ee_s0_bdt_discrim_M260, _ee_s0_bdt_discrim_M270, _ee_s0_bdt_discrim_M300, _ee_s0_bdt_discrim_M350, _ee_s0_bdt_discrim_M400, _ee_s0_bdt_discrim_M450, _ee_s0_bdt_discrim_M500, _ee_s0_bdt_discrim_M550, _ee_s0_bdt_discrim_M600, _ee_s0_bdt_discrim_M650, _ee_s0_bdt_discrim_M750, _ee_s0_bdt_discrim_M800, _ee_s0_bdt_discrim_M900, _ee_s0_bdt_discrim_M1000] = _ee_s0_bdt_discrims
+		_ee_s0_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_ee, str("BDT_classifier_22vars_s0_ee_M" + SignalM[kth]), _bdtvarnames_ee, _Mee4j, _Mbb_H, _Mjj_Z, _Mee, _Meejj,
+		_ptele1, _ptele2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ee, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRee, _phi0_ee, _phi1_ee, _phi0_zz_ee, _phi1_zee, _phi1_zjj_ee,
+		bscoreMVA1, bscoreMVA2, _dRe1Hj1, _dRe1Hj2, _dRe2Hj1, _dRe2Hj2, _dRe1Zj1, _dRe1Zj2, _dRe2Zj1, _dRe2Zj2, _dReebb_H, _dReejj_Z,
+		_cosThetaStarEle, _cosTheta_hbb_ee, _cosTheta_zee_hzz, _cosThetaStar_ee, _cosThetaStarZee_CS, _cosTheta_Zee,
+		_etaele1, _etaele2, _phiele1, _phiele2, _DPHIev, _dPHIeejj_Z, _dPHIeebb_H, _dPhibb_H, _dPhijj_Z)
+
+	[_ee_s0_bdt_discrim_M260, _ee_s0_bdt_discrim_M270, _ee_s0_bdt_discrim_M300, _ee_s0_bdt_discrim_M350, _ee_s0_bdt_discrim_M400, _ee_s0_bdt_discrim_M450, _ee_s0_bdt_discrim_M500,
+	_ee_s0_bdt_discrim_M550, _ee_s0_bdt_discrim_M600, _ee_s0_bdt_discrim_M650, _ee_s0_bdt_discrim_M750, _ee_s0_bdt_discrim_M800, _ee_s0_bdt_discrim_M900, _ee_s0_bdt_discrim_M1000] = _ee_s0_bdt_discrims
 	_ee_s2_bdt_discrims = [-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0,-99.0]
 	for kth in range(len(_ee_s2_bdt_discrims)):
-		_ee_s2_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_ee, str("BDT_classifier_22vars_s2_ee_M" + SignalM[kth]), _bdtvarnames_ee, _Mee4j, _Mbb_H, _Mjj_Z, _Mee, _Meejj, _ptele1, _ptele2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ee, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRee, _phi0_ee, _phi1_ee, _phi0_zz_ee, _phi1_zee, _phi1_zjj_ee, bscoreMVA1, bscoreMVA2, _dRe1Hj1, _dRe1Hj2, _dRe2Hj1, _dRe2Hj2, _dRe1Zj1, _dRe1Zj2, _dRe2Zj1, _dRe2Zj2, _dReebb_H, _dReejj_Z, _cosThetaStarEle, _cosTheta_hbb_ee, _cosTheta_zee_hzz, _cosThetaStar_ee, _cosThetaStarZee_CS, _cosTheta_Zee, _etaele1, _etaele2, _phiele1, _phiele2, _DPHIev, _dPHIeejj_Z, _dPHIeebb_H, _dPhibb_H, _dPhijj_Z)
-	[_ee_s2_bdt_discrim_M260, _ee_s2_bdt_discrim_M270, _ee_s2_bdt_discrim_M300, _ee_s2_bdt_discrim_M350, _ee_s2_bdt_discrim_M400, _ee_s2_bdt_discrim_M450, _ee_s2_bdt_discrim_M500, _ee_s2_bdt_discrim_M550, _ee_s2_bdt_discrim_M600, _ee_s2_bdt_discrim_M650, _ee_s2_bdt_discrim_M750, _ee_s2_bdt_discrim_M800, _ee_s2_bdt_discrim_M900, _ee_s2_bdt_discrim_M1000] = _ee_s2_bdt_discrims
+		_ee_s2_bdt_discrims[kth] = calculateBDTdiscriminant(reader_22vars_ee, str("BDT_classifier_22vars_s2_ee_M" + SignalM[kth]), _bdtvarnames_ee, _Mee4j, _Mbb_H, _Mjj_Z, _Mee, _Meejj,
+		_ptele1, _ptele2, _ptmet, _Pt_Hjet1, _Pt_Hjet2, _Pt_Zjet1, _Pt_Zjet2, _Pt_ee, _Pt_Hjets, _Pt_Zjets, _dRbb_H, _dRjj_Z, _DRee, _phi0_ee, _phi1_ee, _phi0_zz_ee, _phi1_zee, _phi1_zjj_ee,
+		bscoreMVA1, bscoreMVA2, _dRe1Hj1, _dRe1Hj2, _dRe2Hj1, _dRe2Hj2, _dRe1Zj1, _dRe1Zj2, _dRe2Zj1, _dRe2Zj2, _dReebb_H, _dReejj_Z,
+		_cosThetaStarEle, _cosTheta_hbb_ee, _cosTheta_zee_hzz, _cosThetaStar_ee, _cosThetaStarZee_CS, _cosTheta_Zee,
+		_etaele1, _etaele2, _phiele1, _phiele2, _DPHIev, _dPHIeejj_Z, _dPHIeebb_H, _dPhibb_H, _dPhijj_Z)
+
+	[_ee_s2_bdt_discrim_M260, _ee_s2_bdt_discrim_M270, _ee_s2_bdt_discrim_M300, _ee_s2_bdt_discrim_M350, _ee_s2_bdt_discrim_M400, _ee_s2_bdt_discrim_M450, _ee_s2_bdt_discrim_M500,
+	_ee_s2_bdt_discrim_M550, _ee_s2_bdt_discrim_M600, _ee_s2_bdt_discrim_M650, _ee_s2_bdt_discrim_M750, _ee_s2_bdt_discrim_M800, _ee_s2_bdt_discrim_M900, _ee_s2_bdt_discrim_M1000] = _ee_s2_bdt_discrims
 
 	_bdtdiscr = -1.0
 	_bdtdiscrZ = -1.0
@@ -4305,6 +4276,7 @@ def FullKinematicCalculation(T,variation):
 	toreturn += [_ak8_Mee4j_genMatched]
 
 	toreturn += [_xmiss,_ymiss]
+	toreturn += [_flag_isoele1,_flag_noisoele1,_flag_isoele2,_flag_noisoele2]
 	toreturn += [_isomu1,_isomu2,_isoele1,_isoele2]
 	toreturn += [_qmu1,_qmu2,_qele1,_qele2]
 	toreturn += [_dptmu1,_dptmu2]
