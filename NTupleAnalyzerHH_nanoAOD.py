@@ -275,7 +275,6 @@ _kinematicvariables += ['DPhi_jj_Z','DPhi_bb_H']
 _kinematicvariables += ['M_uu4j_gen','M_uu4j_genMatched']
 _kinematicvariables += ['M_ee4j_gen','M_ee4j_genMatched']
 _kinematicvariables += ['jetCntPreFilter','JetCount','MuonCount','ElectronCount','GenJetCount']
-_kinematicvariables += ['muonIndex1','muonIndex2']
 _kinematicvariables += ['ptHat']
 _kinematicvariables += ['CMVA_Zjet1','CMVA_Zjet2']
 _kinematicvariables += ['CMVA_bjet1','CMVA_bjet2']
@@ -2682,11 +2681,6 @@ def FullKinematicCalculation(T,variation):
 	[ak8jetsH,ak8_matchedRecoJetH,ak8_jetIndH,ak8_matchedRecoJetZ,ak8_jetIndZ,_ak8_drujH_genMatched,_ak8_drujZ_genMatched,_ak8_drujH_gen,_ak8_drujZ_gen,_ak8_csvHj_genMatched,_ak8_csvZj_genMatched] = LeptonsAndJetsFromHH(T,8,isData)
 	[_isElectronEvent_gen,_isMuonEvent_gen,_isTauEvent_gen]=getLeptonEventFlavorGEN(T)
 
-	_muonInd1=muonInd[0]
-	_muonInd2=muonInd[1]
-	_jetInd1=jetInd[0]
-	_jetInd2=jetInd[1]
-
 	_ak8jetInd = ak8_jetIndH[0]
 	_ak8jetZInd = ak8_jetIndZ[0]
 	[_ak8_ptrecoj1] = [ak8jetsH[0].Pt()]
@@ -3361,7 +3355,6 @@ def FullKinematicCalculation(T,variation):
 	toreturn += [_Muu4j_gen,_Muu4j_genMatched]
 	toreturn += [_Mee4j_gen,_Mee4j_genMatched]
 	toreturn += [_jetCntPreFilter,_jetcount,_mucount,_elcount,_genjetcount]
-	toreturn += [_muonInd1,_muonInd2]
 	toreturn += [_ptHat]
 	toreturn += [_cmva_Zjet1,_cmva_Zjet2]
 	toreturn += [bscoreMVA1,bscoreMVA2]
