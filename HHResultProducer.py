@@ -21,11 +21,13 @@ else:
 	print 'Not running on cmsneu!'
 	#exit()
 	# 2016 Testing
-	QCDDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2016QCDNonIsoQuickTest_2020_06_18_21_52_59/SummaryFiles'
-	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2016QuickTest_2020_06_18_13_49_49/SummaryFiles'
+#	QCDDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2016QCDNonIsoQuickTest_2020_06_18_21_52_59/SummaryFiles'
+#	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2016QuickTest_2020_06_18_13_49_49/SummaryFiles'
 	# 2017 testing
-#	QCDDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/vinguyen/skim/analysisTreesTesting/NTupleAnalyzerHH_nanoAOD_Full2017QCDNonIsoQuickTest_2020_06_04_12_18_05/SummaryFiles'
-#	NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/vinguyen/skim/analysisTreesTesting/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_06_03_15_00_57/SummaryFiles'
+	QCDDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2017NonIsoQuickTest_2020_07_09_14_29_44/SummaryFiles'
+	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_07_09_01_02_56/SummaryFiles'
+#1	QCDDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/vinguyen/skim/analysisTreesTesting/NTupleAnalyzerHH_nanoAOD_Full2017QCDNonIsoQuickTest_2020_06_04_12_18_05/SummaryFiles'
+#1	NormalDirectory = '/eos/cms/store/group/phys_higgs/HiggsExo/HH_bbZZ_bbllqq/vinguyen/skim/analysisTreesTesting/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_06_03_15_00_57/SummaryFiles'
 #	QCDDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2017QuiCDNonIsoQuickTest_2020_06_02_16_20_45/SummaryFiles'
 #	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_06_02_11_32_50/SummaryFiles'
 #	NormalDirectory = '/afs/cern.ch/work/v/vinguyen/diHiggsAnalysis/NTupleAnalyzerHH_nanoAOD_Full2017QuickTest_2020_05_27_12_15_06/SummaryFiles'
@@ -58,9 +60,9 @@ analysisSignal = 'HHres' # Spin0 - need to have 'HH' in the name
 #lumi = 21780.339
 #lumi = 35863.308
 # 2016
-lumi = 35860.066
+#lumi = 35860.066
 # 2017
-#lumi = 41530.0
+lumi = 41530.0
 
 #HLT_Ele17_Ele12...DZ
 ##lumi=20809.806
@@ -188,7 +190,8 @@ passfilter += '*(Flag_BadPFMuonFilter*Flag_BadChargedCandidateFilter)'
 # 2017
 #preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent)*(AK8_Pt_Hjet>0)*(AK8_Pt_Zjet>0))'
 # 2016
-preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent)*(AK8_Pt_Hjet>0)*(AK8_Pt_Zjet>0))'
+preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent))'
+#preselection_Muon_nos = '((Flag_HLT_Mu17_Mu8)*(Pt_muon1>20)*(Pt_muon2>10)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_uu>15)*(isMuonEvent)*(1-isElectronEvent)*(AK8_Pt_Hjet>0)*(AK8_Pt_Zjet>0))'
 ## *(1-(run_number==1)*(lumi_number==1764)*(event_number==293919))*(1-(run_number==1)*(lumi_number==109126)*(event_number==125821776))*(1-(run_number==1)*(lumi_number==8709)*(event_number==10040671))*(1-(run_number==1)*(lumi_number==100356)*(event_number==94956608))*(1-(run_number==1)*(lumi_number==418554)*(event_number==67052368))*(1-(run_number==1)*(lumi_number==304909)*(event_number==48846528))*(1-(run_number==1)*(lumi_number==485391)*(event_number==77759520))*(1-(run_number==1)*(lumi_number==444879)*(event_number==71269656))*(1-(run_number==1)*(lumi_number==96384)*(event_number==111130112))*(1-(run_number==276775)*(lumi_number==271)*(event_number==363882336))*(1-(run_number==282800)*(lumi_number==375)*(event_number==714565824))*(1-(run_number==278406)*(lumi_number==1240)*(event_number==-2110167296))*(1-(run_number==275310)*(lumi_number==530)*(event_number==944183168))
 
 preselection_Electron_nos = '((Flag_HLT_Ele23_Ele12)*(Pt_ele1>25)*(Pt_ele2>15)*(Pt_Hjet1>20)*(Pt_Hjet2>20)*(Pt_Zjet1>20)*(Pt_Zjet2>20)*(M_ee>15)*(isElectronEvent)*(1-isMuonEvent))'
@@ -708,7 +711,7 @@ def main():
 
 		QCDStudy(qcdselection,qcdselection,MuonOptCutFile,MuNuOptCutFile,NormalWeight,NormalWeightMuNu,version_name)
 
-	if False:
+	if True:
 		[[Rz_uujj,Rz_uujj_err],[Rtt_uujj,Rtt_uujj_err],[Fbd_uujj,Fbd_uujj_err]] = GetNormalizationScaleFactorsAndFbd(NormalWeight+'*'+preselection, NormalDirectory, dyControlRegion, ttControlRegion,0)
 		exit()
 
@@ -823,7 +826,7 @@ def main():
 	# ====================================================================================================================================================== #
 	# This is a basic plotting routine to make Analysis Note style plots with ratio plots. AN Analysis-Note
 	# ====================================================================================================================================================== #
-	if True :
+	if False :
 		# Some modifications to the ST and LQ mass binning
 		bjetbinning = [-1.2,-1.01]
 		for x in range(24):
@@ -3765,6 +3768,12 @@ def GetNormalizationScaleFactors( selection, FileDirectory, controlregion_1, con
 		tn_data = tn_DoubleEleData
 		#t_QCD  = t_QCDEle
 		tn_QCD = tn_QCDEle
+#		doubleIso         = '(Flag_isoEle1*Flag_isoEle2)'
+#		invertedDoubleIso = '(Flag_noIsoEle1*Flag_noIsoEle2*((Flag_isoEle1+Flag_isoEle2)<2))'		
+#		invertedDoubleIso = '((Flag_isoEle1+Flag_isoEle2)<2)'			
+#		invertedDoubleIso = '(((Flag_isoEle1+Flag_isoEle2)==0)*((Flag_noIsoEle1+Flag_noIsoEle2)>0))'
+#		doubleIso         = 'Flag_isoEle1*Flag_isoEle2'
+#		invertedDoubleIso = '((Flag_noIsoEle1*Flag_isoEle1)*(Flag_isoEle2*Flag_noIsoEle2))'
 		doubleIso         = '((TrkIso_ele1<(0.0445+(0.963/Pt_ele1)))*(TrkIso_ele2<(0.0445+(0.963/Pt_ele2))))'
 		invertedDoubleIso = '(((TrkIso_ele1>(0.0445+(0.963/Pt_ele1))) + (TrkIso_ele2>(0.0445+(0.963/Pt_ele2)))) > 0 )'
 #		doubleIso         = '((TrkIso_ele1<0.15)*(TrkIso_ele2<0.15))'
@@ -3806,7 +3815,7 @@ def GetNormalizationScaleFactors( selection, FileDirectory, controlregion_1, con
 		selec_qcd = selection.replace('*('+charge1+'*'+charge2+' < 0)', '*('+charge1+'*'+charge2+' > 0)*'+doubleIso)
 
 		#---- using QCD noniso directory
-		if False:
+		if True:
 			ssiso_n1 = QuickEntries(tn_data          ,selec_qcd_data + '*' + controlregion_1+dataHLT,1.0) # + dataHLT ??
 			ssiso_z1 = QuickIntegral(tn_ZJets        ,selec_qcd + '*' + controlregion_1,Rz_data[0])
 			ssiso_t1 = QuickIntegral(tn_TTBar        ,selec_qcd + '*' + controlregion_1,Rtt_data[0])
@@ -3835,7 +3844,7 @@ def GetNormalizationScaleFactors( selection, FileDirectory, controlregion_1, con
 			ssiso_z2ent = QuickEntries(tn_ZJets        ,selec_qcd + '*' + controlregion_2,1.0)
 
 		#---- using Normal directory
-		if True:
+		if False:
 			ssiso_n1 = QuickEntries(t_data          ,selec_qcd_data + '*' + controlregion_1+dataHLT,1.0) # + dataHLT ??
 			ssiso_z1 = QuickIntegral(t_ZJets        ,selec_qcd + '*' + controlregion_1,Rz_data[0])
 			ssiso_t1 = QuickIntegral(t_TTBar        ,selec_qcd + '*' + controlregion_1,Rtt_data[0])
@@ -3948,6 +3957,13 @@ def GetNormalizationScaleFactorsAndFbd( selection, FileDirectory, controlregion_
 		t_data  = t_DoubleEleData
 		tn_data = tn_DoubleEleData
 ### 2017 Testing
+#		doubleIso         = '(Flag_isoEle1*Flag_isoEle2)'
+#		invertedDoubleIso = '(Flag_noIsoEle1*Flag_noIsoEle2*((Flag_isoEle1+Flag_isoEle2)<2))'
+#		invertedDoubleIso = '((Flag_isoEle1+Flag_isoEle2)<2)'	
+#		invertedDoubleIso = '(((Flag_isoEle1+Flag_isoEle2)==0)*((Flag_noIsoEle1+Flag_noIsoEle2)==2))'		
+#		invertedDoubleIso = '(((Flag_isoEle1==0)+(Flag_noIsoEle2==1)+(Flag_isoEle1==1)+(Flag_noIsoEle2==1))*((Flag_noIsoEle1+Flag_noIsoEle2)>0))'
+#		invertedDoubleIso = '(((Flag_isoEle1+Flag_isoEle2)==0)*((Flag_noIsoEle1+Flag_noIsoEle2)>0))'		
+#		invertedDoubleIso = '((Flag_noIsoEle1*Flag_isoEle1)*(Flag_isoEle2*Flag_noIsoEle2))'
 #		doubleIso         = '(((abs(Eta_ele1)<1.442)*(TrkIso_ele1<(0.0287+(0.506/Pt_ele1)) )+(abs(Eta_ele1)>1.56)*(TrkIso_ele1<(0.0445+(0.963/Pt_ele1)) ))*((abs(Eta_ele2)<1.442)*(TrkIso_ele2<(0.0287+(0.506/Pt_ele2)))+(abs(Eta_ele2)>1.56)*(TrkIso_ele2<(0.0445+(0.963/Pt_ele2)))))'
 
 #		invertedDoubleIso = '((((abs(Eta_ele1)<1.442)*(TrkIso_ele1>(0.0287+(0.506/Pt_ele1)) )+(abs(Eta_ele1)>1.56)*(TrkIso_ele1>(0.0445+(0.963/Pt_ele1)) )) + ((abs(Eta_ele2)<1.442)*(TrkIso_ele2>(0.0287+(0.506/Pt_ele2)))+(abs(Eta_ele2)>1.56)*(TrkIso_ele2>(0.0445+(0.963/Pt_ele2)))))>0)'
@@ -3955,11 +3971,11 @@ def GetNormalizationScaleFactorsAndFbd( selection, FileDirectory, controlregion_
 		#barrel eta<1.442: (0.0287+(0.506/Pt_ele1))   (0.0287+(0.506/Pt_ele2))
 		#endcap eta>1.56: (0.0445+(0.963/Pt_ele1))   (0.0445+(0.963/Pt_ele2))
 
-#		doubleIso         = '((TrkIso_ele1<(0.0445+(0.963/Pt_ele1)))*(TrkIso_ele2<(0.0445+(0.963/Pt_ele2))))'
-#		invertedDoubleIso = '(((TrkIso_ele1>(0.0445+(0.963/Pt_ele1))) + (TrkIso_ele2>(0.0445+(0.963/Pt_ele2)))) > 0 )'
+		doubleIso         = '((TrkIso_ele1<(0.0445+(0.963/Pt_ele1)))*(TrkIso_ele2<(0.0445+(0.963/Pt_ele2))))'
+		invertedDoubleIso = '(((TrkIso_ele1>(0.0445+(0.963/Pt_ele1))) + (TrkIso_ele2>(0.0445+(0.963/Pt_ele2)))) > 0 )'
 ### 2016
-		doubleIso         = '((TrkIso_ele1<0.15)*(TrkIso_ele2<0.15))'
-		invertedDoubleIso = '(((TrkIso_ele1>0.15) + (TrkIso_ele2>0.15))>0)'
+#		doubleIso         = '((TrkIso_ele1<0.15)*(TrkIso_ele2<0.15))'
+#		invertedDoubleIso = '(((TrkIso_ele1>0.15) + (TrkIso_ele2>0.15))>0)'
 
 	#print 'I am in GetNormalizationScaleFactorsAndFbd, selection CR1 \n', selection_data + '*' + controlregion_1+dataHLT
 	#print 'I am in GetNormalizationScaleFactorsAndFbd, selection CR2 \n', selection_data + '*' + controlregion_2+dataHLT
@@ -3997,7 +4013,7 @@ def GetNormalizationScaleFactorsAndFbd( selection, FileDirectory, controlregion_
 		selec_qcd = selection.replace('*('+charge1+'*'+charge2+' < 0)', '*('+charge1+'*'+charge2+' > 0)*'+doubleIso)
 
 		#---- using QCD noniso directory
-		if False:
+		if True:
 			print ' doing ss iso in region 1 '
 			ssiso_n1 = QuickEntries(tn_data          ,selec_qcd_data + '*' + controlregion_1+dataHLT,1.0) # + dataHLT ??
 			ssiso_z1 = QuickIntegral(tn_ZJets        ,selec_qcd + '*' + controlregion_1,1.0)
@@ -4023,7 +4039,7 @@ def GetNormalizationScaleFactorsAndFbd( selection, FileDirectory, controlregion_
 			ssiso_z2ent = QuickEntries(tn_ZJets        ,selec_qcd + '*' + controlregion_2,1.0)
 
 		#---- using Normal directory
-		if True:
+		if False:
 			ssiso_n1 = QuickEntries(t_data          ,selec_qcd_data + '*' + controlregion_1+dataHLT,1.0) # + dataHLT ??
 			ssiso_z1 = QuickIntegral(t_ZJets        ,selec_qcd + '*' + controlregion_1,1.0)
 			ssiso_t1 = QuickIntegral(t_TTBar        ,selec_qcd + '*' + controlregion_1,1.0)
