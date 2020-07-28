@@ -357,12 +357,9 @@ if nonisoswitch==True or quicktestswitch==True:
 # _variations = ['']  # For quicker tests
 
 
-
 ##########################################################################################
 #################     Everything needed for Pileup reweighting     #######################
 ##########################################################################################
-
-
 
 def GetPURescalingFactors(puversion):
 	# Purpose: To get the pileup reweight factors from the PU_Central.root, PU_Up.root, and PU_Down.root files.
@@ -376,7 +373,6 @@ def GetPURescalingFactors(puversion):
 	1.33987e-05 ,1.34061e-05 ,1.34211e-05 ,1.34177e-05 ,1.32959e-05 ,1.33287e-05,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	# from https://twiki.cern.ch/twiki/bin/view/CMS/PdmV2016Analysis and https://github.com/cms-sw/cmssw/blob/CMSSW_8_0_X/SimGeneral/MixingModule/python/mix_2016_25ns_Moriond17MC_PoissonOOTPU_cfi.py
 
-
     # This is the standard (all of 2012) pileup scenario
 	if puversion =='Basic':
 		f_pu_up = TFile("PU_Up.root","read")
@@ -385,21 +381,6 @@ def GetPURescalingFactors(puversion):
 		h_pu_down = f_pu_down.Get('pileup')
 		f_pu_central = TFile("PU_Central.root","read")
 		h_pu_central = f_pu_central.Get('pileup')
-		#h_pu_up = TFile.Open("PU_Up.root",'read').Get('pileup')
-		#h_pu_down = TFile.Open("PU_Down.root",'read').Get('pileup')
-		#h_pu_central = TFile("PU_Central.root",'read').Get('pileup')
-
-	# This is just for 2012D. It was used for some studies. Not that important.
-	#if puversion =='2012D':
-	#	f_pu_up = TFile("PU_Up_2012D.root","read")
-	#	h_pu_up = f_pu_up.Get('pileup')
-	#	f_pu_down = TFile("PU_Down_2012D.root","read")
-	#	h_pu_down = f_pu_down.Get('pileup')
-	#	f_pu_central = TFile("PU_Central_2012D.root","read")
-	#	h_pu_central = f_pu_central.Get('pileup')
-	#	#h_pu_up = TFile.Open("PU_Up_2012D.root").Get('pileup')
-	#	#h_pu_down = TFile.Open("PU_Down_2012D.root",'read').Get('pileup')
-	#	#h_pu_central = TFile.Open("PU_Central_2012D.root",'read').Get('pileup')
 
 	# Arrays for the central and up/down variation weights.
 	bins_pu_central = []
@@ -452,7 +433,6 @@ def GetPURescalingFactors(puversion):
 #################     Everything needed for PDF Weight variation   #######################
 ##########################################################################################
 
-
 def GetPDFWeightVars(T):
 	# Purpose: Determine all the branch names needed to store the PDFWeights
 	#         for CTEQ, MMTH, and NNPDF in flat (non vector) form.
@@ -501,27 +481,8 @@ tout=TTree("PhysicalVariables","PhysicalVariables")
 
 
 # Below all the branches are created, everything is a double except for flags
-# for b in _kinematicvariables:
-# 	for v in _variations:
-# 		exec(b+v+' = array.array("f",[0])')
-# 		exec('tout.Branch("'+b+v+'",'+b+v+',"'+b+v+'/F")' )
-# for b in _weights:
-# 	exec(b+' = array.array("f",[0])')
-# 	exec('tout.Branch("'+b+'",'+b+',"'+b+'/F")' )
-# if dopdf:
-# 	for b in _pdfweights:
-# 		exec(b+' = array.array("f",[0])')
-# 		print (b+' = array.array("f",[0])')
-# 		exec('tout.Branch("'+b+'",'+b+',"'+b+'/F")' )
-# for b in _flags:
-# 	exec(b+' = array.array("L",[0])')
-# 	exec('tout.Branch("'+b+'",'+b+',"'+b+'/i")' )
 
 Branches = {}
-#for b in _kinematicvariables:
-#	for v in _variations:
-#		Branches[b+v] = array.array("f",[0])
-#		tout.Branch(b+v,Branches[b+v],b+v+"/F")
 #this is the baseline
 for b in _kinematicvariables:
 	Branches[b] = array.array("f",[0])
@@ -604,7 +565,6 @@ for vth in _bdtvarsZ:
 readerZ.BookMVA(str("BDT_classifier"), str("/afs/cern.ch/work/v/vinguyen/public/LQ2Analysis13TeV/weights/600GeV/TMVAClassification_ptu1u2cut_Zjets_BDT.weights.xml"))
 
 
-
 ##########################################################################################
 #################           SPECIAL FUNCTIONS FOR ANALYSIS         #######################
 ##########################################################################################
@@ -617,28 +577,6 @@ def PrintBranchesAndExit(T):
 		print n
 	sys.exit()
 
-# PrintBranchesAndExit(t)
-
-#def parseRLElist(triples):
-#	parsedTriples = []
-#	tempTrips = []
-#	_runs = []
-#	_le = []
-#	i = 0
-#	for trip in triples :
-#		[_r,_l,_e] = [trip[0],trip[1],trip[2]]
-#		print [_r,_l,_e]
-#		_runs.append[_r]
-#		if triples[i+1][0] not in _runs :
-#			_le.append([_l,_e])
-#			parsedTriples.append([r,_le])
-#			_le = []
-#		else :
-#			_le.append([_l,_e])
-#		i = i+1
-#	print parsedTriples
-#	return parsedTriples
-#
 def GetRunLumiList():
 	# Purpose: Parse the json file to get a list of good runs and lumis
 	#          to call on later. For real data only.
@@ -697,30 +635,6 @@ def ST(particles):
 		st += p.Pt()
 	return st
 
-def PassTrigger(T,trigger_identifiers,prescale_threshold):
-	# Purpose: Return a flag (1 or 0) to indicate whether the event passes any trigger
-	#         which is syntactically matched to a set of strings trigger_identifiers,
-	#         considering only triggers with a prescale <= the prescale threshold.
-	for n in range(len(T.HLTInsideDatasetTriggerNames)):
-		name = T.HLTInsideDatasetTriggerNames[n]
-		#if 'Ele' in name or 'Pho' in name: print name, T.HLTInsideDatasetTriggerPrescales[n]
-		consider_trigger=True
-		for ident in trigger_identifiers:
-			if ident not in name:
-				consider_trigger=False
-		if (consider_trigger==False) : continue
-
-		prescale = T.HLTInsideDatasetTriggerPrescales[n]
-
-		if prescale > prescale_threshold:
-			consider_trigger=False
-		if (consider_trigger==False) : continue
-
-		decision = bool(T.HLTInsideDatasetTriggerDecisions[n])
-		if decision==True:
-			return 1
-	return 0
-
 def GetPUWeight(T,version,puversion):
 	# Purpose: Get the pileup weight for an event. Version can indicate the central
 	#         weight, or the Upper or Lower systematics. Needs to be updated for
@@ -747,15 +661,6 @@ def GetPUWeight(T,version,puversion):
 		if version=='SysDown':
 			puweights=LowerWeights
 
-	# Also possible to do just for 2012D, for cross-checks.
-	#if puversion=='2012D':
-	#	puweights = CentralWeights_2012D
-	#	if version=='SysUp':
-	#		puweights=UpperWeights_2012D
-	#	if version=='SysDown':
-	#		puweights=LowerWeights_2012D
-
-
 	# Make sure there exists a weight for the number of interactions given,
 	# and set the puweight to the appropriate value.
 	NRange = range(len(puweights))
@@ -763,8 +668,6 @@ def GetPUWeight(T,version,puversion):
 		puweight=puweights[N_pu]
 	# print puweight
 	return puweight
-
-
 
 def GetPDFWeights(T):
 	# Purpose: Gather the pdf weights into a single list.
@@ -786,115 +689,6 @@ def GetPDFWeights(T):
 	for x in range(extras):
 		_allweights.append(1.0)
 	return _allweights
-
-
-def MuonsFromLQ(T):
-	# Purpose: Testing. Get the muons from LQ decays and find the matching reco muons.
-	#         Return TLorentzVectors of the gen and reco muons, and the indices for
-	#         the recomuons as well.
-	muons = []
-	genmuons=[]
-	recomuoninds = []
-	for n in range(T.nMuon):
-		m = TLorentzVector()
-                m.SetPtEtaPhiM(T.Muon_pt[n],T.Muon_eta[n],T.Muon_phi[n],T.Muon_mass[n])
-		muons.append(m)
-
-	if isData==False:
-		for n in range(T.nGenPart):
-			pdg = T.GenPart_pdgId[n]
-			if pdg not in [13,-13]:
-				continue
-			motherIndex = T.GenPart_genPartIdxMother[n]
-
-			motherid = 0
-			if motherIndex>-1:
-				motherid = T.GenPart_pdgId[motherIndex]
-				#print 'pdgId:',pdg,'index:',T.GenParticleMotherIndex[n],'mother pdgId:',T.GenParticlePdgId[motherIndex]
-			if motherid not in [42,-42]:
-				continue
-			m = TLorentzVector()
-			m.SetPtEtaPhiM(T.GenPart_pt[n],T.GenPart_eta[n],T.GenPart_phi[n],T.GenPart_mass[n])
-			genmuons.append(m)
-
-	matchedrecomuons=[]
-	emptyvector = TLorentzVector()
-	emptyvector.SetPtEtaPhiM(0,0,0,0)
-	#print 'number of genmuons:',len(genmuons)
-	for g in genmuons:
-		bestrecomuonind=-1
-		mindr = 99999
-		ind=-1
-		for m in muons:
-			ind+=1
-			dr = abs(m.DeltaR(g))
-			if dr<mindr:
-				mindr =dr
-				bestrecomuonind=ind
-		if mindr<0.4:
-			matchedrecomuons.append(muons[bestrecomuonind])
-			recomuoninds.append(bestrecomuonind)
-		else:
-			matchedrecomuons.append(emptyvector)
-			recomuoninds.append(-99)
-		#print mindr, muons[bestrecomuonind].Pt(), g.Pt()
-	while len(recomuoninds)<2 :
-		recomuoninds.append(-99)
-	return([genmuons,matchedrecomuons,recomuoninds])
-	#return(recomuoninds)
-
-def JetsFromLQ(T):
-	# Purpose: Testing. Get the quarks from LQ decays and find the matching reco pfJets.
-	#         Return TLorentzVectors of the gen and reco jets, and the indices for
-	#         the recojets as well.
-	jets = []
-	genjets=[]
-	recojetinds = []
-	for n in range(T.nJet):
-		if  ((T.Jet_jetId[n] & 0x2) > 0) and T.Jet_pt[n]>30 and abs(T.Jet_eta[n])<2.4 : #morse only use jets that pass tightid, fixme check jet eta
-			m = TLorentzVector()
-			m.SetPtEtaPhiM(T.Jet_pt[n],T.Jet_eta[n],T.Jet_phi[n],T.Jet_mass[n])
-			jets.append(m)
-
-	if isData==False:
-		for n in range(T.nGenPart):
-			pdg = T.GenPart_pdgId[n]
-			if pdg not in [4,-4]: #Get charm quarks
-				continue
-			motherIndex = T.GenPart_genPartIdxMother[n]
-			motherid = 0
-			if motherIndex>-1:
-				motherid = T.GenPart_genPartIdxMother[motherIndex]
-			if motherid not in [42,-42]:
-				continue
-			m = TLorentzVector()
-			m.SetPtEtaPhiM(T.GenPart_pt[n],T.GenPart_eta[n],T.GenPart_phi[n],T.GenPart_mass[n])
-			genjets.append(m)
-
-	matchedrecojets=[]
-	emptyvector = TLorentzVector()
-	emptyvector.SetPtEtaPhiM(0,0,0,0)
-	for g in genjets:
-		bestrecojetind=-1
-		mindr = 99999
-		ind=-1
-		for m in jets:
-			ind+=1
-			dr = abs(m.DeltaR(g))
-			if dr<mindr:
-				mindr =dr
-				bestrecojetind=ind
-		if mindr<0.6:
-			matchedrecojets.append(jets[bestrecojetind])
-			recojetinds.append(bestrecojetind)
-		else:
-			matchedrecojets.append(emptyvector)
-			recojetinds.append(-99)
-		#print mindr, jets[bestrecojetind].Pt(), g.Pt()
-	while len(recojetinds)<2 :
-		recojetinds.append(-99)
-	return([genjets,matchedrecojets,recojetinds])
-	#return(recojetinds)
 
 def getLeptonEventFlavorGEN(T):
 
@@ -1443,108 +1237,6 @@ def PropagatePTChangeToMET(met,original_object,varied_object):
 	#         met to compensate for the change in the object.
 	return  met + varied_object - original_object
 
-
-def LooseIDMuons(T,_met,variation,isdata):
-	# Purpose: Gets the collection of muons passing loose muon ID.
-	#         Returns muons as TLorentzVectors, and indices corrresponding
-	#         to the surviving muons of the muon collection.
-	#         Also returns modified MET for systematic variations.
-	muons = []
-	muoninds = []
-	if variation=='MESup':
-		#_MuonPt = [(pt + pt*(0.05*pt/1000.0)) for pt in T.MuonPt]#original
-		_MuonPt = [(pt + pt*(0.10*pt/1000.0)) for pt in T.Muon_pt]#updated to Zprime 13TeV study number
-	elif variation=='MESdown':
-		#_MuonPt = [(pt - pt*(0.05*pt/1000.0)) for pt in T.MuonPt]
-		_MuonPt = [(pt - pt*(0.10*pt/1000.0)) for pt in T.Muon_pt]
-	elif variation=='MER':
-		_MuonPt = [pt+pt*tRand.Gaus(0.0,  0.01*(pt<=200.0) + (0.04)*(pt>200.0) ) for pt in T.Muon_pt]
-	else:
-		_MuonPt = [pt for pt in T.Muon_pt]
-
-	if (isdata):
-		_MuonPt = [pt for pt in T.Muon_pt]
-
-	trk_isos = []
-	charges = []
-	deltainvpts = []
-
-	nequiv = []
-	for n in range(len(T.Muon_pt)):
-		#if T.MuonIsGlobal[n]: #not necessary anymore - global muon requirement encompassed later
-		nequiv.append(n)
-
-	# Loop over muons using the pT array from above
-	for n in range(len(_MuonPt)):
-
-		Muon_ptTuneP = T.Muon_tunepRelPt[nequiv[n]]*_MuonPt[n]
-
-		# Some muon alignment studies use the inverse diff of the high pT and Trk pT values
-		deltainvpt = -1.0
-		if ( Muon_ptTuneP > 0.0 ) and (_MuonPt[n]>0.0):
-			deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
-
-		# For alignment correction studies in MC, the pT is modified according to
-		# parameterizations of the position
-		if alignementcorrswitch == True and isdata==False:
-			if abs(deltainvpt) > 0.0000001:
-				__Pt_mu = _MuonPt[n]
-				__Eta_mu = T.Muon_eta[n]
-				__Phi_mu = T.Muon_phi[n]
-				__Charge_mu = T.Muon_charge[nequiv[n]]
-				if (__Pt_mu >200)*(abs(__Eta_mu) < 0.9)      :
-					_MuonPt[n] =  ( (1.0) / ( -5e-05*__Charge_mu*sin(-1.4514813+__Phi_mu ) + 1.0/__Pt_mu ) )
-				deltainvpt = ( 1.0/Muon_ptTuneP - 1.0/_MuonPt[n])
-
-
-		# For the ID, begin by assuming it passes. Veto if it fails any condition
-		# conditions from https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonIdRun2#Short_Term_Medium_Muon_Definitio
-                # https://twiki.cern.ch/twiki/bin/view/CMS/SWGuideMuonIdRun2?rev=31#Short_Term_Instructions_for_Mori
-		# NTuple definitions in https://raw.githubusercontent.com/CMSLQ/RootTupleMakerV2/master/src/RootTupleMakerV2_Muons.cc
-		Pass = True
-
-                # Require Loose muon flag
-	        Pass *= T.Muon_looseId[n] > 0
-
-	        #fixme these two are equivalent to IsLooseMuon #?
-		#Pass *= T.MuonIsPF[n]
-	        #Pass *= (T.MuonIsGlobal[n] or T.MuonIsTracker[n])
-
-		# A preliminary pT cut.
-		Pass *= (_MuonPt[n] > 8)#fixme offline cuts are 20(10)
-
-		# Eta requirement
-	        Pass *= abs(T.Muon_eta[n])<2.4
-
-		# Isolation condition using combined PF relative isolation - 0.25 for loose (98% efficiency), 0.15 for tight (95% efficiency)
-	        correctedIso = T.Muon_pfRelIso04_all[n]
-		# Don't apply isolation for QCD studies
-		if nonisoswitch != True:
-			Pass *= correctedIso < 0.25
-
-		# Propagate MET changes if undergoing systematic variation
-		if (Pass):
-			NewMu = TLorentzVector()
-			OldMu = TLorentzVector()
-			NewMu.SetPtEtaPhiM(_MuonPt[n],T.Muon_eta[n],T.Muon_phi[n],T.Muon_mass[n])
-			#NewMu.SetPtEtaPhiM(_MuonPt[n],T.MuonEta[n],T.MuonPhi[n],0)
-			OldMu.SetPtEtaPhiM(T.Muon_pt[n],T.Muon_eta[n],T.Muon_phi[n],T.Muon_mass[n])
-			#OldMu.SetPtEtaPhiM(T.MuonPt[n],T.MuonEta[n],T.MuonPhi[n],0)
-			_met = PropagatePTChangeToMET(_met,OldMu,NewMu)
-
-			# Append items to retun if the muon is good
-
-			muons.append(NewMu)
-			muoninds.append(n)
-			pfid.append(T.Muon_isPFcand[nequiv[n]])
-			charges.append(T.Muon_charge[n])
-			layers.append(T.Muon_nTrackerLayers[nequiv[n]])
-			trk_isos.append(correctedIso)
-			deltainvpts.append(deltainvpt)
-
-	return [muons,muoninds,_met,trk_isos,charges,deltainvpts,pfid,layers]
-
-
 def MediumIDMuons(T,_met,variation,isdata):
 	# Purpose: Gets the collection of muons passing medium muon ID.
 	#         Returns muons as TLorentzVectors, and indices corrresponding
@@ -1694,9 +1386,10 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 
 		iso=T.Electron_pfRelIso03_all[n]
 
+		# QCD selection, don't apply iso
 	        Pass *= (T.Electron_mvaFall17V2noIso_WP90[n]+T.Electron_mvaFall17V2Iso_WP90[n])>0
 
-		# Don't apply isolation for QCD studies
+		# Normal selection, apply iso
 		if nonisoswitch == False:
 			Pass *= T.Electron_mvaFall17V2Iso_WP90[n]
 
@@ -1728,291 +1421,6 @@ def mvaWP90Electrons(T,_met,variation,isdata):
 			_hlt2SFsDown.append(_hlt2SFdown)
 
 	return [electrons,electroninds,_met,isoFlag,noIsoFlag,trk_isos,charges,_idIsoSFs,_idIsoSFsUp,_idIsoSFsDown,_hlt1SFs,_hlt1SFsUp,_hlt1SFsDown,_hlt2SFs,_hlt2SFsUp,_hlt2SFsDown]
-
-
-def LooseElectrons(T,_met,variation,isdata):
-	# Purpose: Gets the collection of electrons passing Loose Electron ID.
-	#         Returns electrons as TLorentzVectors, and indices corrresponding
-	#         to the surviving electrons of the electron collection.
-	#         Also returns modified MET for systematic variations.
-	#         https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Recommended_Working_points_for_2
-	electrons = []
-	electroninds = []
-	if variation=='EESup':
-		_ElectronPt = [pt*1.01 for pt in T.Electron_pt]
-	elif variation=='EESdown':
-		_ElectronPt = [pt*0.99 for pt in T.Electron_pt]
-	elif variation=='EER':
-		_ElectronPt = [pt+pt*tRand.Gaus(0.0,0.04) for pt in T.Electron_pt]
-	else:
-		_ElectronPt = [pt for pt in T.Electron_pt]
-
-	trk_isos = []
-	charges = []
-	deltainvpts = []
-	pfid = []
-	layers = []
-
-	for n in range(len(_ElectronPt)):
-		Pass = True
-		Pass *= (T.Electron_pt[n] > 12)
-		Pass *= abs(T.Electron_eta[n])<2.5
-
-		barrel = bool((abs(T.Electron_eta[n]))<1.442) #?
-		endcap = bool((abs(T.Electron_eta[n]))>1.56) #?
-		Pass *= (barrel+endcap)
-
-	        Pass *= T.Electron_mvaFall17V2Iso_WPL[n]>0
-
-	        if (barrel):
-			Pass *= abs(T.Electron_dxy[n])<0.05
-			Pass *= abs(T.Electron_dz[n]) <0.10
-		elif (endcap):
-			Pass *= abs(T.Electron_dxy[n])< 0.10
-			Pass *= abs(T.Electron_dz[n]) < 0.20
-
-
-		""" #?
-	        ecal_energy_inverse = 1.0/T.ElectronEcalEnergy[n]
-		eSCoverP = T.ElectronESuperClusterOverP[n]
-
-		#HLT-safe cuts, except iso which is in nonisoswitch below
-        	if (barrel):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.011
-	                Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.060
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        #Pass *= T.ElectronNormalizedChi2[n]<
-        	elif (endcap):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.031
-	                #Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        #Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.065
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        Pass *= T.ElectronNormalizedChi2[n]<3.0
-
-		#Isolation
-		chad = T.ElectronPFChargedHadronIso03[n]
-		nhad = T.ElectronPFNeutralHadronIso03[n]
-		pho  = T.ElectronPFPhotonIso03[n]
-
-		eA = getElectronEffectiveArea(T.ElectronEta[n])
-		iso = chad + max(0.0, nhad + pho - T.ElectronRhoIsoHEEP[n]*eA)
-		iso = iso/_ElectronPt[n]
-
-		"""
-		iso = T.Electron_mvaFall17V2Iso[n]/T.Electron_pt[n]
-		# Don't apply isolation for QCD studies
-		if nonisoswitch != True:
-			if (barrel):
-				Pass *= iso<0.0588
-		                #? Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.165*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.160
-		                #? Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.060*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
-			elif (endcap):
-				Pass *= iso<0.0571
-		                #? Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.132*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
-
-		if (Pass):
-			NewEl = TLorentzVector()
-			OldEl = TLorentzVector()
-			NewEl.SetPtEtaPhiM(_ElectronPt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			OldEl.SetPtEtaPhiM(T.Electron_pt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			met = PropagatePTChangeToMET(_met,OldEl,NewEl)
-
-		if (Pass):
-			electrons.append(NewEl)
-			electroninds.append(n)
-			trk_isos.append(iso)
-			charges.append(T.Electron_charge[n])
-			deltainvpts.append(0.)
-			pfid.append(0.)
-			layers.append(0.)
-
-	return [electrons,electroninds,_met,trk_isos,charges]
-
-
-def MediumElectrons(T,_met,variation,isdata):
-	# Purpose: Gets the collection of electrons passing Tight Electron ID.
-	#         Returns electrons as TLorentzVectors, and indices corrresponding
-	#         to the surviving electrons of the electron collection.
-	#         Also returns modified MET for systematic variations.
-	#         https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Recommended_Working_points_for_2
-	electrons = []
-	electroninds = []
-	if variation=='EESup':
-		_ElectronPt = [pt*1.01 for pt in T.Electron_pt]
-	elif variation=='EESdown':
-		_ElectronPt = [pt*0.99 for pt in T.Electron_pt]
-	elif variation=='EER':
-		_ElectronPt = [pt+pt*tRand.Gaus(0.0,0.04) for pt in T.Electron_pt]
-	else:
-		_ElectronPt = [pt for pt in T.Electron_pt]
-
-	trk_isos = []
-	charges = []
-	deltainvpts = []
-	pfid = []
-	layers = []
-
-	for n in range(len(_ElectronPt)):
-		Pass = True
-		Pass *= (_ElectronPt[n] > 15)
-		Pass *= abs(T.Electron_eta[n])<2.5 #?
-
-		barrel = bool((abs(T.Electron_eta[n]))<1.442) #?
-		endcap = bool((abs(T.Electron_eta[n]))>1.56)
-		Pass *= (barrel+endcap)>0
-
-	        Pass *= T.Electron_mvaFall17V2noIso_WP90[n]>0
-		"""
-	        ecal_energy_inverse = 1.0/T.ElectronEcalEnergy[n]
-		eSCoverP = T.ElectronESuperClusterOverP[n]
-
-        	if (barrel):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.00998
-	                Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.00311
-		        Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.103
-		        Pass *= T.ElectronHoE[n]<0.253
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.134
-	                Pass *= T.ElectronMissingHits[n]<=1
-	                Pass *= bool(T.ElectronHasMatchedConvPhot[n])==False
-        	elif (endcap):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.0298
-	                Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.00609
-		        Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.045
-		        Pass *= T.ElectronHoE[n]<0.0878
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.13
-	                Pass *= T.ElectronMissingHits[n]<=1
-	                Pass *= bool(T.ElectronHasMatchedConvPhot[n])==False
-
-		#HLT-safe cuts, except iso which is in nonisoswitch below
-        	if (barrel):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.011
-	                Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.060
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        #Pass *= T.ElectronNormalizedChi2[n]<
-        	elif (endcap):
-			Pass *= T.ElectronFull5x5SigmaIEtaIEta[n]<0.031
-	                #Pass *= abs(T.ElectronDeltaEtaTrkSeedSC[n])<0.004
-		        #Pass *= abs(T.ElectronDeltaPhiTrkSC[n])<0.020
-		        Pass *= T.ElectronHoE[n]<0.065
-		        Pass *= abs(1.0 - eSCoverP)*ecal_energy_inverse<0.013
-		        Pass *= T.ElectronNormalizedChi2[n]<3.0
-
-		chad = T.ElectronPFChargedHadronIso03[n]
-		nhad = T.ElectronPFNeutralHadronIso03[n]
-		pho  = T.ElectronPFPhotonIso03[n]
-
-		eA = getElectronEffectiveArea(T.ElectronEta[n])
-		iso = chad + max(0.0, nhad + pho - T.ElectronRhoIsoHEEP[n]*eA)
-		iso = iso/_ElectronPt[n]
-		"""
-		iso = T.Electron_mvaFall17V2Iso[n]
-		# Don't apply isolation for QCD studies
-		if nonisoswitch != True:
-			if (barrel):
-				Pass *= iso<0.0695
-		                #? Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.165*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.160
-		                #? Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.060*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
-			elif (endcap):
-				Pass *= iso<0.0821
-		                #? Pass *= ((T.ElectronEcalPFClusterIso[n] - 0.132*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= ((T.ElectronHcalPFClusterIso[n] - 0.131*T.fixedGridRhoFastjetCentralCalo)/_ElectronPt[n])<0.120
-		                #? Pass *= (T.ElectronTrkIsoDR03[n]/_ElectronPt[n])<0.08
-
-		# impact parameter requirements
-        	if (barrel):
-			Pass *= abs(T.Electron_dxy[n])<0.05
-			Pass *= abs(T.Electron_dz[n]) <0.10
-		elif (endcap):
-			Pass *= abs(T.Electron_dxy[n])< 0.10
-			Pass *= abs(T.Electron_dz[n]) < 0.20
-
-		if (Pass):
-			NewEl = TLorentzVector()
-			OldEl = TLorentzVector()
-			NewEl.SetPtEtaPhiM(_ElectronPt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			OldEl.SetPtEtaPhiM(T.Electron_pt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			met = PropagatePTChangeToMET(_met,OldEl,NewEl)
-
-		if (Pass):
-			electrons.append(NewEl)
-			electroninds.append(n)
-			trk_isos.append(iso) #?
-			charges.append(T.Electron_charge[n])
-			deltainvpts.append(0.)
-			pfid.append(0.)
-			layers.append(0.)
-
-	return [electrons,electroninds,_met,trk_isos,charges]
-
-
-def TightElectrons(T,_met,variation,isdata):
-	# Purpose: Gets the collection of electrons passing Tight Electron ID.
-	#         Returns electrons as TLorentzVectors, and indices corrresponding
-	#         to the surviving electrons of the electron collection.
-	#         Also returns modified MET for systematic variations.
-	#         https://twiki.cern.ch/twiki/bin/view/CMS/CutBasedElectronIdentificationRun2#Recommended_Working_points_for_2
-	electrons = []
-	electroninds = []
-	if variation=='EESup':
-		_ElectronPt = [pt*1.01 for pt in T.Electron_pt]
-	elif variation=='EESdown':
-		_ElectronPt = [pt*0.99 for pt in T.Electron_pt]
-	elif variation=='EER':
-		_ElectronPt = [pt+pt*tRand.Gaus(0.0,0.04) for pt in T.Electron_pt]
-	else:
-		_ElectronPt = [pt for pt in T.Electron_pt]
-
-	trk_isos = []
-	charges = []
-	deltainvpts = []
-	pfid = []
-	layers = []
-
-	for n in range(len(_ElectronPt)):
-		Pass = True
-		Pass *= (T.Electron_pt[n] > 12)
-		Pass *= abs(T.Electron_eta[n])<2.5
-
-		barrel = bool((abs(T.Electron_eta[n]))<1.442) #?
-		endcap = bool((abs(T.Electron_eta[n]))>1.56) #?
-		Pass *= (barrel+endcap)
-
-	        Pass *= T.Electron_mvaFall17V2Iso_WP80[n]>0
-
-        	if (barrel):
-			Pass *= abs(T.Electron_dxy[n])<0.05
-			Pass *= abs(T.Electron_dz[n]) <0.10
-		elif (endcap):
-			Pass *= abs(T.Electron_dxy[n])< 0.10
-			Pass *= abs(T.Electron_dz[n]) < 0.20
-
-		if (Pass):
-			NewEl = TLorentzVector()
-			OldEl = TLorentzVector()
-			NewEl.SetPtEtaPhiM(_ElectronPt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			OldEl.SetPtEtaPhiM(T.Electron_pt[n],T.Electron_eta[n],T.Electron_phi[n],T.Electron_mass[n])
-			met = PropagatePTChangeToMET(_met,OldEl,NewEl)
-
-		if (Pass):
-			electrons.append(NewEl)
-			electroninds.append(n)
-			trk_isos.append(T.Electron_mvaFall17V2Iso[n]) #?
-			charges.append(T.Electron_charge[n])
-			deltainvpts.append(0.)
-			pfid.append(0.)
-			layers.append(0.)
-
-	return [electrons,electroninds,_met,trk_isos,charges]
-
 
 def getSFelectron(_pt,_eta):
 	SFbyPt = []
@@ -2066,7 +1474,6 @@ def getSFelectron(_pt,_eta):
 	if _eta>1.80  and _eta<=2.17 : hlt2SFbyPt = [[0.983,0.022],[0.995,0.027],[0.996,0.011],[1.01,0.004],[1.002,0.004],[1.001,0.002],[1.0,0.003],[1.0,0.014],[0.999,0.011],[0.998,0.006],[1.004,0.008],[1.003,0.004]]
 	if _eta>2.17  and _eta<=2.50 : hlt2SFbyPt = [[0.854,0.02],[0.886,0.007],[0.922,0.008],[0.966,0.004],[0.983,0.005],[0.99,0.013],[0.998,0.007],[0.992,0.057],[1.001,0.012],[1.006,0.018],[1.025,0.04],[0.99,0.008]]
 
-
 	idIsoSFs = idIsoSFbyPt[index]
 	idIsoSF = idIsoSFs[0]
 	idIsoSFup   = idIsoSFs[0]+idIsoSFs[1]
@@ -2083,21 +1490,6 @@ def getSFelectron(_pt,_eta):
 	hlt2SFdown = max(hlt2SFs[0]-hlt2SFs[1],0.0)
 
 	return [idIsoSF,idIsoSFup,idIsoSFdown,hlt1SF,hlt1SFup,hlt1SFdown,hlt2SF,hlt2SFup,hlt2SFdown]
-
-
-def getElectronEffectiveArea(eta):
-	abseta=abs(eta)
-	eA = 1.
-	if abseta>0.0000 and abseta<1.0000 : eA=0.1703
-	if abseta>1.0000 and abseta<1.4790 : eA=0.1715
-	if abseta>1.4790 and abseta<2.0000 : eA=0.1213
-	if abseta>2.0000 and abseta<2.2000 : eA=0.1230
-	if abseta>2.2000 and abseta<2.3000 : eA=0.1635
-	if abseta>2.3000 and abseta<2.4000 : eA=0.1937
-	if abseta>2.4000 and abseta<5.0000 : eA=0.2393
-	return eA
-
-
 
 def JERModifiedPt(pt,eta,phi,T,modtype):
 	# Pupose: Modify reco jets based on genjets. Input is pt/eta/phi of a jet.
@@ -2291,7 +1683,6 @@ def LooseIDJets(T,met,variation,isdata):
 
 	# print met.Pt(),
 
-
 	JetFailThreshold=0.0
 
 	jets = []
@@ -2411,252 +1802,6 @@ def LooseIDJets(T,met,variation,isdata):
 	# print met.Pt()
 
 	return [jets,jetinds,met,JetFailThreshold,NHFs,NEMFs,CSVscores,bMVAscores,bTagSFsLoose,bTagSFsMed,bTagSFsLoose_csv,bTagSFsMed_csv,bTagRegSFs]
-
-def AK8LooseIDJets(T,met,variation,isdata):
-	# Pupose: Gets the collection of jets passing loose PFJet ID.
-	#         Returns jets as TLorentzVectors, and indices corrresponding
-	#         to the surviving jetss of the jet collection.
-	#         Also returns modified MET for systematic variations.
-
-	if variation!='JERup' and variation!='JERdown':
-		# _PFJetPt = [JERModifiedPt(T.PFJetPt[n],T.PFJetEta[n],T.PFJetPhi[n],T,'') for n in range(len(T.PFJetPt))]
-		 _PFJetPt = [pt for pt in T.FatJet_pt]
-	if variation=='JERup':
-		_PFJetPt = [JERModifiedPt(T.FatJet_pt[n],T.FatJet_eta[n],T.FatJet_phi[n],T,'up') for n in range(len(T.FatJet_pt))]
-	if variation=='JERdown':
-		_PFJetPt = [JERModifiedPt(T.FatJet_pt[n],T.FatJet_eta[n],T.FatJet_phi[n],T,'down') for n in range(len(T.FatJet_pt))]
-
-	#print 'JEC:'
-	#print [T.PFJetJECUncAK4CHS[n] for n in range(len(_PFJetPt))]
-	#print '\n'
-
-	if variation=='JESup':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncAK4CHS[n]) for n in range(len(_PFJetPt))] #? Are the following in NanoAOD?
-	if variation=='JESdown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncAK4CHS[n]) for n in range(len(_PFJetPt))]
-
-	if variation=='JESAbsoluteMPFBiasUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncAbsoluteMPFBiasAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESAbsoluteMPFBiasDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncAbsoluteMPFBiasAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESAbsoluteScaleUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncAbsoluteScaleAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESAbsoluteScaleDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncAbsoluteScaleAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESAbsoluteStatUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncAbsoluteStatAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESAbsoluteStatDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncAbsoluteStatAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESFlavorQCDUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncFlavorQCDAK4CHS[n]	) for n in range(len(_PFJetPt))]
-	if variation=='JESFlavorQCDDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncFlavorQCDAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESFragmentationUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncFragmentationAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESFragmentationDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncFragmentationAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpDataMCUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpDataMCAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpDataMCDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpDataMCAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtBBUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpPtBBAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtBBDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpPtBBAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtEC1Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpPtEC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtEC1Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpPtEC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtEC2Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpPtEC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtEC2Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpPtEC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtHFUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpPtHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtHFDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpPtHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtRefUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncPileUpPtRefAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESPileUpPtRefDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncPileUpPtRefAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeBalUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeBalAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeBalDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeBalAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeFSRUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeFSRAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeFSRDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeFSRAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJEREC1Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeJEREC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJEREC1Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeJEREC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJEREC2Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeJEREC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJEREC2Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeJEREC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJERHFUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeJERHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeJERHFDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeJERHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtBBUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativePtBBAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtBBDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativePtBBAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtEC1Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativePtEC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtEC1Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativePtEC1AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtEC2Up':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativePtEC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtEC2Down':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativePtEC2AK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtHFUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativePtHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativePtHFDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativePtHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatECUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeStatECAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatECDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeStatECAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatFSRUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeStatFSRAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatFSRDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeStatFSRAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatHFUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncRelativeStatHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESRelativeStatHFDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncRelativeStatHFAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESSinglePionECALUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncSinglePionECALAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESSinglePionECALDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncSinglePionECALAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESSinglePionHCALUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncSinglePionHCALAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESSinglePionHCALDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncSinglePionHCALAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESTimePtEtaUp':
-		_PFJetPt = [ _PFJetPt[n]*(1.0+T.PFJetJECUncTimePtEtaAK4CHS[n]) for n in range(len(_PFJetPt))]
-	if variation=='JESTimePtEtaDown':
-		_PFJetPt = [ _PFJetPt[n]*(1.0-T.PFJetJECUncTimePtEtaAK4CHS[n]) for n in range(len(_PFJetPt))]
-
-	if (isdata):
-		_PFJetPt = [pt for pt in T.FatJet_pt]
-		#_PFJetPt = [T.PFJetPtAK4CHS[n]*T.PFJetL2L3ResJECAK4CHS[n] for n in range(len(T.PFJetPtAK4CHS))]
-
-	# print met.Pt(),
-
-
-	JetFailThreshold=0.0
-
-	jets = []
-	jetinds = []
-	bTagRegSFs = []
-	NHFs = []
-	NEMFs = []
-	CSVscores,bMVAscores = [],[]
-	bTagSFsLoose, bTagSFsMed = [],[] #[central,up,down]
-	bTagSFsLoose_csv, bTagSFsMed_csv = [],[] #[central,up,down]
-	for n in range(len(_PFJetPt)):
-		looseJetID = False
-		eta = T.FatJet_eta[n]
-#?		NHF = T.Jet_neHEF[n]
-#?		NEMF = T.Jet_neEmEF[n]
-#?		CEMF = T.Jet_chEmEF[n]
-#?		CHF = T.Jet_chHEF[n]
-#?		MUF = T.PFJetMuonEnergyFractionAK4CHS[n]
-#?		NumConst = T.PFJetChargedMultiplicityAK4CHS[n]+T.PFJetNeutralMultiplicityAK4CHS[n]
-#?		NumNeutralParticle = T.PFJetNeutralMultiplicityAK4CHS[n]
-#?		CHM = T.PFJetChargedMultiplicityAK4CHS[n]
-
-		looseJetID = (T.FatJet_jetId[n] & 0x2)
-#		looseJetID = (abs(eta)<2.4 and NHF<0.99 and NEMF<0.99 and NumConst>1 and CHF>0 and CHM>0 and CEMF<0.99)
-		#if abs(eta)<=2.7:
-		#	looseJetID = (NHF<0.99 and NEMF<0.99 and NumConst>1) and ((abs(eta)<=2.4 and CHF>0 and CHM>0 and CEMF<0.99) or abs(eta)>2.4) and abs(eta)<=2.7
-		#elif abs(eta)<=3.0:
-		#	looseJetID = (NHF< 0.98 and NEMF>0.01 and NumNeutralParticle>2 and abs(eta)>2.7 and abs(eta)<=3.0 )
-		#else:
-		#	looseJetID = (NEMF<0.90 and NumNeutralParticle>10 and abs(eta)>3.0 and abs(eta)<5.0 )
-		if _PFJetPt[n]>20 :#fixme todo was pt>30, reduced for HH
-			if looseJetID:
-				j = TLorentzVector()
-				j.SetPtEtaPhiM(_PFJetPt[n],T.FatJet_eta[n],T.FatJet_phi[n],T.FatJet_mass[n])
-				oldjet = TLorentzVector()
-				oldjet.SetPtEtaPhiM(T.FatJet_pt[n],T.FatJet_eta[n],T.FatJet_phi[n],T.FatJet_mass[n])
-				met = PropagatePTChangeToMET(met,oldjet,j)
-				jets.append(j)
-				jetinds.append(n)
-				NHFs.append(NHF)
-				NEMFs.append(NEMF)
-				CSVscores.append(T.FatJet_btagCSVV2[n])
-				bMVAscores.append(T.FatJet_btagCMVA[n])
-#				bTagRegSFs.append(T.Jet_bRegCorr[n])
-
-				# b-tag SF
-				flavor = abs(T.Jet_hadronFlavour[n])#updated to HadronFlavour
-				#print flavor
-				if flavor in [0,1,2,3,21]: flavor=2
-				if flavor == 4 : flavor=1
-				if flavor == 5 : flavor=0
-				ptSF=T.Jet_pt[n]
-				etaSF=abs(eta)
-				if etaSF>=2.4: etaSF=2.399
-				sf_loose, sf_loose_up, sf_loose_down, sf_medium, sf_medium_up, sf_medium_down=1.,1.,1.,1.,1.,1.
-				if not isdata:
-					sf_loose = readerLoose.eval_auto_bounds(
-						'central',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-					sf_loose_up = readerLoose.eval_auto_bounds(
-						'up',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-					sf_loose_down = readerLoose.eval_auto_bounds(
-						'down',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-					sf_medium = readerMed.eval_auto_bounds(
-						'central',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-					sf_medium_up = readerMed.eval_auto_bounds(
-						'up',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-					sf_medium_down = readerMed.eval_auto_bounds(
-						'down',      # systematic (here also 'up'/'down' possible)
-						flavor,                    # jet flavor
-						etaSF,  # eta
-						ptSF         # pt
-						)
-				bTagSFsLoose.append([sf_loose,sf_loose_up,sf_loose_down])
-				bTagSFsMed.append([sf_medium,sf_medium_up,sf_medium_down])
-				sf_loose_csv, sf_loose_csv_up, sf_loose_csv_down, sf_medium_csv, sf_medium_csv_up, sf_medium_csv_down=1.,1.,1.,1.,1.,1.
-				bTagSFsLoose_csv.append([sf_loose_csv,sf_loose_csv_up,sf_loose_csv_down])
-				bTagSFsMed_csv.append([sf_medium_csv,sf_medium_csv_up,sf_medium_csv_down])
-				#if T.PFJetCombinedMVABTagAK4CHS[n]>-0.5884:
-				#	print flavor,abs(T.PFJetEtaAK4CHS[n]),T.PFJetPtAK4CHS[n]
-				#	print 'loose:',sf_loose,sf_loose_up,sf_loose_down
-				#	print 'medium:',sf_medium,sf_medium_up,sf_medium_down,'\n'
-
-			else:
-				if _PFJetPt[n] > JetFailThreshold:
-					JetFailThreshold = _PFJetPt[n]
-
-	# print met.Pt()
-
-	return [jets,jetinds,met,JetFailThreshold,NHFs,NEMFs,CSVscores,bMVAscores,bTagSFsLoose,bTagSFsMed,bTagSFsLoose_csv,bTagSFsMed_csv,bTagRegSFs]
-
 
 
 def GetHHJetsNew(jets,btagScoresCSV,btagScoresMVA,bTagSFloose,bTagSFmed,bTagSFloose_csv,bTagSFmed_csv,bTagRegSFs,muon1,muon2,electron1,electron2,isMuEvent,isEleEvent,jetinds, T, met):
@@ -2946,57 +2091,6 @@ def GetHHJetsNew(jets,btagScoresCSV,btagScoresMVA,bTagSFloose,bTagSFmed,bTagSFlo
 	regr_bjet1,regr_bjet2,Hjet1BtagSFL,Hjet1BtagSFM,Hjet2BtagSFL,Hjet2BtagSFM,Zjet1BtagSFL,Zjet1BtagSFM,Zjet2BtagSFL,Zjet2BtagSFM,
 	Hjet1BtagSFL_csv,Hjet1BtagSFM_csv,Hjet2BtagSFL_csv,Hjet2BtagSFM_csv,Zjet1BtagSFL_csv,Zjet1BtagSFM_csv,Zjet2BtagSFL_csv,Zjet2BtagSFM_csv]
 
-#def bjetRegressionCorrectionFactor(RegressionReader, _regrvarsnames, bjet, ind_orig, T, met):
-#	# see https://github.com/ResonantHbbHgg/bbggTools/blob/master/src/bbggJetRegression.cc#L229
-#	if ind_orig==-1: return 1.0 #Case where there are no jets in the event
-#	_regrvarsnames['Jet_pt'][0]				= bjet.Pt()
-#	_regrvarsnames['Jet_corr'][0]			= T.JetPtAK4CHS[ind_orig]/T.PFJetPtRawAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_eta'][0]			= bjet.Eta()
-#	_regrvarsnames['Jet_mt'][0]				= T.PFJetMtAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_leadTrackPt'][0]	= T.PFJetLeadTrackPtAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_leptonPtRel'][0]	= T.PFJetSoftLepRatioAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_leptonPt'][0]		= T.PFJetSoftLepPtAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_leptonDeltaR'][0]	= T.PFJetSoftLepDrAK4CHS[ind_orig] # default is 0 ==> ok
-#	_regrvarsnames['Jet_totHEF'][0]			= T.PFJetChargedHadronEnergyFractionAK4CHS[ind_orig]+T.PFJetNeutralHadronEnergyFractionAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_neEmEF'][0]			= T.PFJetNeutralEmEnergyFractionAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_vtxPt'][0]			= math.sqrt(T.PFJetVtxPxAK4CHS[ind_orig]*T.PFJetVtxPxAK4CHS[ind_orig] + T.PFJetVtxPyAK4CHS[ind_orig]*T.PFJetVtxPyAK4CHS[ind_orig])
-#	_regrvarsnames['Jet_vtxMass'][0]		= T.PFJetVtxMassAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_vtx3dL'][0]			= T.PFJetVtx3DValAK4CHS[ind_orig]
-#	_regrvarsnames['Jet_vtxNtrk'][0]		= T.PFJetVtxNtracksAK4CHS[ind_orig]
-#	if(T.PFJetVtx3DSigAK4CHS[ind_orig] == 0):
-#		_regrvarsnames['Jet_vtx3deL'][0]	= 0
-#	else:
-#		_regrvarsnames['Jet_vtx3deL'][0]	= T.PFJetVtx3DValAK4CHS[ind_orig]/T.PFJetVtx3DSigAK4CHS[ind_orig]
-#	_regrvarsnames['nPVs'][0]				= CountVertices(T)
-#	_regrvarsnames['Jet_PFMET'][0]			= T.PFMETType1Cor[0]
-#	_regrvarsnames['Jet_METDPhi'][0]		= bjet.DeltaPhi(met) # range from mpi to pi
-
-	# calculate corr factor
-#	RegressedValues = RegressionReader.EvaluateRegression("BDTG method")
-#	regr_corrF = RegressedValues[0]
-
-#	if v == '' :
-#		print ' Calculation of regression corr factor '
-#		print ' Jet_pt ', _regrvarsnames['Jet_pt'][0]
-#		print ' Jet_corr ', _regrvarsnames['Jet_corr'][0]
-#		print ' Jet_eta ', _regrvarsnames['Jet_eta'][0]
-#		print ' Jet_mt ', _regrvarsnames['Jet_mt'][0]
-#		print ' Jet_leadTrackPt ', _regrvarsnames['Jet_leadTrackPt'][0]
-#		print ' Jet_leptonPtRel ', _regrvarsnames['Jet_leptonPtRel'][0]
-#		print ' Jet_leptonPt ', _regrvarsnames['Jet_leptonPt'][0]
-#		print ' Jet_leptonDeltaR ', _regrvarsnames['Jet_leptonDeltaR'][0]
-#		print ' Jet_totHEF ', _regrvarsnames['Jet_totHEF'][0]
-#		print ' Jet_neEmEF ', _regrvarsnames['Jet_neEmEF'][0]
-#		print ' Jet_vtxPt ', _regrvarsnames['Jet_vtxPt'][0], T.PFJetVtxPxAK4CHS[ind_orig], T.PFJetVtxPyAK4CHS[ind_orig]
-#		print ' Jet_vtxMass ', _regrvarsnames['Jet_vtxMass'][0]
-#		print ' Jet_vtx3dL ', _regrvarsnames['Jet_vtx3dL'][0]
-#		print ' Jet_vtxNtrk ', _regrvarsnames['Jet_vtxNtrk'][0]
-#		print ' Jet_vtx3deL ', _regrvarsnames['Jet_vtx3deL'][0]
-#		print ' nPVs ', _regrvarsnames['nPVs'][0]
-#		print ' Jet_PFMET ', _regrvarsnames['Jet_PFMET'][0]
-#		print ' Jet_METDPhi ', _regrvarsnames['Jet_METDPhi'][0]
-#		print ' regr_corrF ', regr_corrF
-#	return regr_corrF
 
 ########################################### New Function for AK8 jet tagging###########################
 ################## doesn't go through loose id jets first, so this function should get these variables from the Ak8 jets:
@@ -3452,7 +2546,6 @@ def getPhi_ZZ(Zj1, Zj2, ell1, ell2) :
 	return vPhi
 
 
-
 ##########################################################################################
 ###########      FULL CALCULATION OF ALL VARIABLES, REPEATED FOR EACH SYS   ##############
 ##########################################################################################
@@ -3479,26 +2572,11 @@ def FullKinematicCalculation(T,variation):
 	met = MetVector(T)
 	# ID Muons,Electrons
 	[muons,goodmuoninds,met,trkisosMu,chargesMu,dpts,pfid,layers] = MediumIDMuons(T,met,variation,isData)
-	# muons_forjetsep = MuonsForJetSeparation(T)
-	# taus_forjetsep = TausForJetSeparation(T)
 	[electrons,electroninds,met,flag_isoEle,flag_noIsoEle,trkisosEle,chargesEle,idIsoSFEle,idIsoSFEleUp,idIsoSFEleDown,hlt1SFEle,hlt1SFEleUp,hlt1SFEleDown,hlt2SFEle,hlt2SFEleUp,hlt2SFEleDown] = mvaWP90Electrons(T,met,variation,isData)
 	# ID Jets and filter from leptons
 	[jets,jetinds,met,failthreshold,neutralhadronEF,neutralemEF,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs] = LooseIDJets(T,met,variation,isData)
-	#jetsTemp = jets
 	_jetCntPreFilter = len(jets)
-	## jets = GeomFilterCollection(jets,muons_forjetsep,0.5)
 
-#	[jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds]
-#	= GeomFilterCollection(jets,muons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)
-#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
-	#FIXME removing filter from electrons for now, since we don't use electron channel
-#        [jets,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds]
-#	= GeomFilterCollection(jets,electrons,0.3,btagCSVscores,btagMVAscores,btagSFsLoose,btagSFsMedium,btagSFsLoose_csv,btagSFsMedium_csv,btagRegSFs,jetinds)
-#fixme todo was 0.5 - changing to 0.3 following HH->wwbb. In any case 0.5 is too big now that cone size is 0.4 - put back in!
-
-	##[jetsTemp,jetinds] = GeomFilterCollection(jetsTemp,muons,0.3,jetinds)
-	##[jetsTemp,jetinds] = GeomFilterCollection(jetsTemp,electrons,0.3,jetinds)
-	## jets = GeomFilterCollection(jets,taus_forjetsep,0.5)
 	# Empty lorentz vector for bookkeeping
 	EmptyLorentz = TLorentzVector()
 	EmptyLorentz.SetPtEtaPhiM(0,0,0,0)
@@ -3600,8 +2678,6 @@ def FullKinematicCalculation(T,variation):
 		btagSFsMedium_csv.append([1.,1.,1.])
 		btagRegSFs.append(-5.0)
 
-	[_genMuons,_matchedRecoMuons,muonInd] = MuonsFromLQ(T)
-	[_genJets,_matchedRecoJets,jetInd] = JetsFromLQ(T)
 	[_genMuonsZ,_matchedRecoMuonsZ,muonIndZ,_genElectronsZ,_matchedRecoElectronsZ,electronIndZ,_genJetsH,_matchedRecoJetsH,jetIndH,_genJetsZ,_matchedRecoJetsZ,jetIndZ,onShellZMu,onShellZEle] = LeptonsAndJetsFromHH(T,4,isData)
 	[ak8jetsH,ak8_matchedRecoJetH,ak8_jetIndH,ak8_matchedRecoJetZ,ak8_jetIndZ,_ak8_drujH_genMatched,_ak8_drujZ_genMatched,_ak8_drujH_gen,_ak8_drujZ_gen,_ak8_csvHj_genMatched,_ak8_csvZj_genMatched] = LeptonsAndJetsFromHH(T,8,isData)
 	[_isElectronEvent_gen,_isMuonEvent_gen,_isTauEvent_gen]=getLeptonEventFlavorGEN(T)
@@ -3660,7 +2736,6 @@ def FullKinematicCalculation(T,variation):
 	_dRe2Hj2_genMatched = abs(_matchedRecoElectronsZ[1].DeltaR(_matchedRecoJetsH[1]))
 	_dRe2Zj1_genMatched = abs(_matchedRecoElectronsZ[1].DeltaR(_matchedRecoJetsZ[0]))
 	_dRe2Zj2_genMatched = abs(_matchedRecoElectronsZ[1].DeltaR(_matchedRecoJetsZ[1]))
-
 
 	leptons,_genLeptonsZ,_matchedRecoLeptonsZ=[],[],[]
 	_isMuonEvent,_isElectronEvent = False,False
@@ -3822,18 +2897,6 @@ def FullKinematicCalculation(T,variation):
 	[_Zjet2BsfLoose_csv,_Zjet2BsfLooseUp_csv,_Zjet2BsfLooseDown_csv] = _Zjet2BtagSFL_csv
 	[_Zjet2BsfMedium_csv,_Zjet2BsfMediumUp_csv,_Zjet2BsfMediumDown_csv] = _Zjet2BtagSFM_csv
 
-	"""
-	#if muons[0].Pt()>20 and muons[1].Pt()>10 and variation=='':
-	if variation=='':
-		print '    bjet1score, bjet2score, Hmass, Zmass, ZMuMass, uu4jMass, indexbj1, indexbj2, indexj1, indexj2, indexj3 '
-		print '1: ',bscore1,bscore2,(bjet1+bjet2).M(),(jet1+jet2).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1+jet2).M(),
-		indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2,indRecoJet3,bjet1.Pt(),bjet2.Pt(),jet1.Pt(),jet2.Pt(),jet3.Pt(), ' ' ,jetIndH[0],jetIndH[1],jetIndZ[0],jetIndZ[1]
-
-		print '2: ',bscore1_2,bscore2_2,(bjet1_2+bjet2_2).M(),(jet1_2+jet2_2).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1_2+jet2_2).M()
-		print '3: ',bscore1_3,bscore2_3,(bjet1_3+bjet2_3).M(),(jet1_3+jet2_3).M(),(muons[0]+muons[1]).M(),(muons[0]+muons[1]+jet1_3+jet2_3).M()
-		print ''
-	"""
-
 	CorHj1Avail,CorHj2Avail  = False,False
 	CorZj1Avail,CorZj2Avail  = False,False
 	for j in jetinds :
@@ -3864,39 +2927,8 @@ def FullKinematicCalculation(T,variation):
 	[_Hj1Present,_Hj2Present,_Zj1Present,_Zj2Present]=[ bjet1.Pt()>0, bjet2.Pt()>0, jet1.Pt()>0, jet2.Pt()>0 ]
 
 	#if v == '' : print 'CorHj1Avail',CorHj1Avail,'CorHj2Avail',CorHj2Avail,'CorHj1j2Avail',_CorHj1j2Avail
-	#if jetIndH[0] >= 0 and jetIndH[1] >= 0 and jetIndZ[0] >= 0 and jetIndZ[1] >= 0 :
-	#if jetIndH[0] >= 0 and jetIndH[1] >= 0 and _CorHj1j2Avail and (not (_Hj1Matched and _Hj2Matched)) and len(goodmuoninds) >= 2:
-
-#	if jetIndH[0] >= 0 and jetIndH[1] >= 0 and _CorHj1j2Avail and len(goodmuoninds) >= 2:
-#
-#		if v == '' :
-#			print ' dR gen jet:', abs(_genJetsH[0].DeltaR(_genJetsH[1]))
-#			for i in range(len(jets)) :
-#				if T.PFJetPartonFlavourAK4CHS[jetinds[i]] == 21: continue
-#				#if T.PFJetCombinedInclusiveSecondaryVertexBTagAK4CHS[jetinds[i]] < 0.06: continue
-#				print '   After Filter Recojet index',jetinds[i], 'flavor', T.PFJetPartonFlavourAK4CHS[jetinds[i]],  'pt',jets[i].Pt(),'eta',jets[i].Eta(), 'phi',jets[i].Phi() ,'btagScores', btagMVAscores[i],
-#				'CSVScore', btagCSVscores[i], 'pileupMVA',T.PFJetPileupMVAAK4CHS[jetinds[i]], T.PFJetPileupMVApassesLooseAK4CHS[jetinds[i]],T.PFJetPileupMVApassesMediumAK4CHS[jetinds[i]],T.PFJetPileupMVApassesTightAK4CHS[jetinds[i]]
-#
-#			print 'matched bjet indices:',jetIndH
-#			print 'matched  jet indices:',jetIndZ
-#			print 'reco     jet indices:',jetinds
-#			print 'getHH    jet indices:',indRecoBJet1,indRecoBJet2,indRecoJet1,indRecoJet2
-#			print ''
-#			print 'good muons   indices:',goodmuoninds
-#			print 'good elects  indices:',electroninds
-#			print ''
-
 
 	[_Muu4j,_Mee4j,_Mll4j] = [0., 0., 0.]
-	#if len(jets)>=4 and ( len(muons)>=2 or len(electrons)>=2 ):
-	#	if len(muons)>=2 :
-	#		_Muu4j = (muons[0]+muons[1]+jets[0]+jets[1]+jets[2]+jets[3]).M()
-	#	if len(electrons)>=2 :
-	#		_Mee4j = (electrons[0]+electrons[1]+jets[0]+jets[1]+jets[2]+jets[3]).M()
-	#	if _ptmu1 > _pte1 and len(muons)>=2:
-	#		_Mll4j = (muons[0]+muons[1]+jets[0]+jets[1]+jets[2]+jets[3]).M()
-	#	elif _pte1 > _ptmu1 and len(electrons)>=2 :
-	#		_Mll4j = (electrons[0]+electrons[1]+jets[0]+jets[1]+jets[2]+jets[3]).M()
 	_Muu4j = (muons[0]+muons[1]+bjet1+bjet2+jet1+jet2).M()
 	_Mee4j = (electrons[0]+electrons[1]+bjet1+bjet2+jet1+jet2).M()
 	_Mll4j = (leptons[0]+leptons[1]+bjet1+bjet2+jet1+jet2).M()
@@ -4094,7 +3126,6 @@ def FullKinematicCalculation(T,variation):
 			_Mee4j_genMatched = (_matchedRecoJetsZ[0]+_matchedRecoJetsZ[1]+_matchedRecoJetsH[0]+_matchedRecoJetsH[1]+_matchedRecoElectronsZ[0]+_matchedRecoElectronsZ[1]).M()
 			_Mll4j_genMatched = (_matchedRecoJetsZ[0]+_matchedRecoJetsZ[1]+_matchedRecoJetsH[0]+_matchedRecoJetsH[1]+_matchedRecoElectronsZ[0]+_matchedRecoElectronsZ[1]).M()
 
-
 	_Mjj_Z_gen, _Mbb_H_gen, _Mjj_Z_genMatched, _Mbb_H_genMatched = 0.,0.,0.,0.
 	if len(_genJetsZ)>=2 and len(_genJetsH)>=2 :
 		_Mjj_Z_gen = (_genJetsZ[0]+_genJetsZ[1]).M()
@@ -4103,7 +3134,6 @@ def FullKinematicCalculation(T,variation):
 	if len(_matchedRecoJetsZ)>=2 and len(_matchedRecoJetsH)>=2 :
 		_Mjj_Z_genMatched = (_matchedRecoJetsZ[0]+_matchedRecoJetsZ[1]).M()
 		_Mbb_H_genMatched = (_matchedRecoJetsH[0]+_matchedRecoJetsH[1]).M()
-
 
 	_genjetcount = 0
 	if isData==0:
@@ -4401,7 +3431,6 @@ def checkWorZpt(T,lowcut, highcut, WorZ):
 		if WorZ=='W' : parts = [-24,24]
 		if WorZ=='Z' : parts = [-22,-23,22,23]
 		if pdg in parts:#[-24,24]:#23=Z, 24=W, 22=gamma
-			#print n,pdg,pt,status
 			if pt>maxPt: maxPt=pt
 		#	#print n,pdg,pt,status
 		#	if pt<100: return 1
